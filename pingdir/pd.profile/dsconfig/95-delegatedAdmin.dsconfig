@@ -1,0 +1,17 @@
+dsconfig set-http-servlet-extension-prop \
+    --extension-name "Delegated Admin"  \
+    --set access-token-validator:PingFederate
+
+dsconfig create-web-application-extension \
+    --extension-name "Delegated Admin App"  \
+    --set base-context-path:/delegator  \
+    --set document-root-directory:webapps/delegator 
+
+dsconfig set-connection-handler-prop \
+    --handler-name "HTTPS Connection Handler"  \
+    --set "web-application-extension:Delegated Admin App"
+
+dsconfig create-delegated-admin-rights \
+    --rights-name "Delegated Super Admin"  \
+    --set enabled:true  \
+    --set admin-user-dn:uid=deladmin,ou=people,${USER_BASE_DN} 

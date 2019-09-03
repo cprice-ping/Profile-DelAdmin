@@ -1,0 +1,11 @@
+dn: uid=deladmin,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: pf-connected-identities
+sn: Delegated
+cn: Delegated Administrator
+uid: deladmin
+userPassword: 2FederateM0re
+pf-connected-identity: auth-source=pf-local-identity:user-id=deladmin
