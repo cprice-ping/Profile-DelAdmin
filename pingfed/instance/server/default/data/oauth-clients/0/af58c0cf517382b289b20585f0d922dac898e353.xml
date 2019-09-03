@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urn:Clients xmlns:urn="urn:pingidentity.com:pf:oauth:client">
-    <urn:Client client_id="PingLogon" name="Ping Logon" logo="" persistentGrantExpirationTime="0" enabled="true" lastModified="2019-07-30T23:33:33.718Z" bypassApprovalPage="false" restrictScopes="false" jwksUri="" jwks="" clientAuthnType="NONE" enforceOneTimeJWT="false" isRequireSignedRequest="false">
+    <urn:Client client_id="PingLogon" name="Ping Logon" logo="" persistentGrantExpirationTime="0" enabled="true" lastModified="2019-09-03T23:22:30.058Z" bypassApprovalPage="false" restrictScopes="false" jwksUri="" jwks="" clientAuthnType="NONE" enforceOneTimeJWT="false" isRequireSignedRequest="false">
         <urn:Description/>
         <urn:Grant type="refresh_token"/>
-        <urn:Grant type="authorization_code"/>
         <urn:Grant type="implicit"/>
+        <urn:Grant type="authorization_code"/>
         <urn:RedirectUri>http://changeme.com</urn:RedirectUri>
         <urn:RedirectUri>https://*/delegator/*</urn:RedirectUri>
-        <urn:SupplementalInfo key="ALLOW_EXCLUSIVE_SCOPES" value="false"/>
+        <urn:SupplementalInfo key="ALLOW_EXCLUSIVE_SCOPES" value="true"/>
         <urn:SupplementalInfo key="DEVICE_FLOW_SETTING" value="SERVER_DEFAULT"/>
         <urn:SupplementalInfo key="DEFAULT_ATM_ID" value="jwtHTML"/>
         <urn:SupplementalInfo key="PING_ACCESS_LOGOUT_CAPABLE" value="false"/>
@@ -16,6 +16,7 @@
         <urn:SupplementalInfo key="ACCESS_SESSION_REVOCATION_API" value="false"/>
         <urn:SupplementalInfo key="PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE" value="SERVER_DEFAULT"/>
         <urn:SupplementalInfo key="VALIDATE_USING_ALL_ELIGIBLE_ATMS" value="false"/>
+        <urn:SupplementalInfo key="EXCLUSIVE_SCOPES" value="[&quot;urn:pingidentity:directory-delegated-admin&quot;]"/>
         <urn:SupplementalInfo key="ENABLED" value="true"/>
     </urn:Client>
 </urn:Clients>
