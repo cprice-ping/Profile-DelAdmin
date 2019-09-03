@@ -1,1 +1,4 @@
-${PD_DELEGATOR_PUBLIC_HOSTNAME}
+ldif/userRoot/30-OAuthClients.ldif
+instance/webapps/delegator/app/static/js/main.3ec90f43.chunk.js.map
+instance/webapps/delegator/set-up-delegator.sh
+instance/webapps/delegator/delegated-admin-template.dsconfig
