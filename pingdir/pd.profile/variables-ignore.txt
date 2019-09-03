@@ -1,4 +1,3 @@
 misc-files/README
 instance/webapps/delegator/app/static/js/main.3ec90f43.chunk.js.map
-instance/webapps/delegator/set-up-delegator.sh
-instance/webapps/delegator/delegated-admin-template.dsconfig
+instance/webapps/delegator/app/static/js/1.90949149.chunk.js.map
