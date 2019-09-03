@@ -30,7 +30,7 @@ ROOT_USER_PASSWORD_FILE=${BASE}/staging/pwd
 ADMIN_USER_PASSWORD_FILE=${ROOT_USER_PASSWORD_FILE}
 
 # The user base dn may be provided (Default: dc=example,dc=com)
-# USER_BASE_DN=dc=yourCompanyName,dc=com
+USER_BASE_DN=dc=example,dc=com
 
 # The Java heap size may be provided
 # MAX_HEAP_SIZE=384m
@@ -48,7 +48,8 @@ ENCRYPTION_PASSWORD_FILE=${ROOT_USER_PASSWORD_FILE}
 # whitespace-separated list of the log files to tail on the container's standard output
 # This is optional and will default to tailing access log
 #TAIL_LOG_FILES="/opt/out/instance/logs/access /opt/out/instance/logs/audit"
-#
+
+# PD Host of the Delegated Admin app
 PD_DELEGATOR_PUBLIC_HOSTNAME=localhost
 
 # Base Hostname of the PingFed service being used for Delegated Admin
