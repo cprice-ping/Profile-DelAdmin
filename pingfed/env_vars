@@ -1,1 +1,2 @@
-PF_BASE_URL = "https://localhost:9031"
+# BaseURL of the PingFed service
+PF_BASE_URL=https://localhost:9031
