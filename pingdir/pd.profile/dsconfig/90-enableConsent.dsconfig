@@ -1,0 +1,1 @@
+dsconfig set-consent-service-prop --set enabled:true --set base-dn:ou=Consents,dc=example,dc=com --set bind-dn:cn=administrator --set "consent-record-identity-mapper:Exact Match" --set service-account-dn:cn=administrator --set unprivileged-consent-scope:pd:consent:unpriv --set privileged-consent-scope:pd:consent:priv

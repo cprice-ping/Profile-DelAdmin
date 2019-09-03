@@ -1,0 +1,3 @@
+dsconfig create-consent-definition --definition-name PF-OAuth --set display-name:PF-OAuth-Consent
+
+dsconfig create-consent-definition-localization --definition-name PF-OAuth --localization-name en --set version:1.0 --set "title-text:PF OAuth Consent Definition" --set "data-text:This record defines the OAuth Scopes allowed" --set "purpose-text:Used to tell PF what scopes to include in the access_token"
