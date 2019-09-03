@@ -1,2 +1,2 @@
 ldif/userRoot/30-OAuthClients.ldif
-instance/webapps/delegator
+instance/webapps/delegator/*
