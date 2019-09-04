@@ -10,12 +10,6 @@ services:
       - VERBOSE=false
       # BaseURL of the PingFed service
       - PF_BASE_URL=https://localhost:9031
-      # Base Hostname of the PingFed service being used for Delegated Admin
-      - PF_BASE_HOST=localhost
-      # Hostname of the PingDirectory service used for Delegator
-      - PD_BASE_HOST=localhost
-      # Base Port of the PingDirectory API service used for Delegator
-      - PD_BASE_PORT=1443
     env_file:
       # Configuration file created when setup.sh (Getting-started project root directory) is first run to source
       # devops user/key details for evaluation licenses and for docker image/git tags
