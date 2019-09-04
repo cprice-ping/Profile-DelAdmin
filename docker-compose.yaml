@@ -8,6 +8,14 @@ services:
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-DelAdmin.git
       - SERVER_PROFILE_PATH=pingfed
       - VERBOSE=false
+      # BaseURL of the PingFed service
+      - PF_BASE_URL=https://localhost:9031
+      # Base Hostname of the PingFed service being used for Delegated Admin
+      - PF_BASE_HOST=localhost
+      # Hostname of the PingDirectory service used for Delegator
+      - PD_BASE_HOST=localhost
+      # Base Port of the PingDirectory API service used for Delegator
+      - PD_BASE_PORT=1443
     env_file:
       # Configuration file created when setup.sh (Getting-started project root directory) is first run to source
       # devops user/key details for evaluation licenses and for docker image/git tags
@@ -33,8 +41,10 @@ services:
       - SERVER_PROFILE_PARENT=BASELINE
       - SERVER_PROFILE_BASELINE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
       - SERVER_PROFILE_BASELINE_PATH=baseline/pingdirectory
-#      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
-#      - SERVER_PROFILE_PATH=baseline/pingdirectory
+      # PD Host of the Delegated Admin app
+      - PD_DELEGATOR_PUBLIC_HOSTNAME=localhost
+      # Base Hostname of the PingFed service being used for Delegated Admin
+      - PF_BASE_HOST=localhost
 
     env_file:
       - ~/.pingidentity/devops

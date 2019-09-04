@@ -5,13 +5,13 @@
 */
 
 // The hostname for the Ping Federate instance used with this app.
-window.PF_HOST = 'localhost';
+window.PF_HOST = '${PD_DELEGATOR_PUBLIC_HOSTNAME}';
 
 // The port for the Ping Federate instance used with this app.
 window.PF_PORT = '9031';
 
 // The client id that was set up with Ping Federate and intended to be used by this app.
-window.DADMIN_CLIENT_ID = 'dadmin';
+window.DADMIN_CLIENT_ID = 'PingLogon';
 
 // The hostname for the DS instance the app will be interfacing with. By default, the app assumes it
 // is hosted alongside your DS instance, in which case it does not need to be specified. Only change

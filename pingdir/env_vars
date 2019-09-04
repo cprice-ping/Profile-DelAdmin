@@ -48,9 +48,3 @@ ENCRYPTION_PASSWORD_FILE=${ROOT_USER_PASSWORD_FILE}
 # whitespace-separated list of the log files to tail on the container's standard output
 # This is optional and will default to tailing access log
 #TAIL_LOG_FILES="/opt/out/instance/logs/access /opt/out/instance/logs/audit"
-
-# PD Host of the Delegated Admin app
-PD_DELEGATOR_PUBLIC_HOSTNAME=localhost
-
-# Base Hostname of the PingFed service being used for Delegated Admin
-PF_BASE_HOST=localhost
