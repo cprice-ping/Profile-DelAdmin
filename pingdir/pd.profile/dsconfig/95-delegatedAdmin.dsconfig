@@ -29,3 +29,5 @@ dsconfig set-http-servlet-extension-prop --extension-name "Delegated Admin" --se
 dsconfig create-delegated-admin-rights --rights-name "Delegated Super Admin" --set enabled:true --set admin-user-dn:uid=deladmin,ou=people,${USER_BASE_DN} 
 dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Super Admin" --rest-resource-type users --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update
 dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Super Admin" --rest-resource-type groups --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update
+
+ 
