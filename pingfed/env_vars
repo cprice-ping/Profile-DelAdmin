@@ -1,2 +1,5 @@
 # BaseURL of the PingFed service
 PF_BASE_URL=https://localhost:9031
+
+# Base Hostname of the PingFed service being used for Delegated Admin
+PF_BASE_HOST=localhost
