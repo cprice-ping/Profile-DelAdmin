@@ -23,7 +23,7 @@ window.DS_HOST = ${PD_BASE_URL};
 // it is hosted alongside your DS instance, in which case it does not need to be specified. Only
 // change this variable if you are hosting this application elsewhere.
 // DEFAULT: undefined
-// window.DS_PORT = undefined;
+window.DS_PORT = ${PD_BASE_PORT};
 
 // The length of time (in minutes) until the session will require a new login attempt
 // DEFAULT: 30 minutes

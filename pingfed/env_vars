@@ -5,4 +5,7 @@ PF_BASE_URL=https://localhost:9031
 PF_BASE_HOST=localhost
 
 # BaseURL of the PingDirectory service used for Delegator
-PD_BASE_URL=https://localhost:1443
+PD_BASE_URL=https://localhost
+
+# Base Port of the PingDirectory API service used for Delegator
+PD_BASE_PORT=1443

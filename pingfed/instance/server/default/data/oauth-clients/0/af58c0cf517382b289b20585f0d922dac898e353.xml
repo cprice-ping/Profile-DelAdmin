@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urn:Clients xmlns:urn="urn:pingidentity.com:pf:oauth:client">
-    <urn:Client client_id="PingLogon" name="Ping Logon" logo="" persistentGrantExpirationTime="0" enabled="true" lastModified="2019-09-03T23:22:30.058Z" bypassApprovalPage="false" restrictScopes="false" jwksUri="" jwks="" clientAuthnType="NONE" enforceOneTimeJWT="false" isRequireSignedRequest="false">
+    <urn:Client client_id="PingLogon" name="Ping Logon" logo="" persistentGrantExpirationTime="0" enabled="true" lastModified="2019-09-03T23:22:30.058Z" bypassApprovalPage="true" restrictScopes="false" jwksUri="" jwks="" clientAuthnType="NONE" enforceOneTimeJWT="false" isRequireSignedRequest="false">
         <urn:Description/>
         <urn:Grant type="refresh_token"/>
         <urn:Grant type="implicit"/>
