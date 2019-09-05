@@ -28,7 +28,7 @@ PingFederate needs a couple of additional options:
 * OAuth AS --> Allowed Origins -- `https://${DELEGATOR_PUBLIC_URL}`  (Used to allow Delegator to call OIDC endpoints)
 * PingLogon client is configured for Implicit and a wildcard `redirect_uri`
 
-# Deployment - Docker Compose
+## Deployment - Docker Compose
 Environment variables in the `docker-compose.yaml` can be modified to inject the correct locations into this stack
 
 To implement this Use Case, download the `docker-compose.yaml` file and run `docker-compose up -d`
