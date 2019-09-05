@@ -21,3 +21,9 @@ https://localhost:8443/console
 Server: pingdirectory
 User: Administrator
 Pwd: 2FederateM0re
+
+Things of note:
+PingFederate needs a couple of additional options:
+
+Virtual Host -- `pingfederate`  (Used for the backchannel ATV call from PD)
+OAuth AS --> Allowed Origins -- `https://localhost:1443`  (Used to allow Delegator to call OIDC endpoints)
