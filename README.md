@@ -18,15 +18,15 @@ This stack can be used as the basis of Delegated Admin Use Cases.
 Delegated Objects are managed using the PingData console:
 https://localhost:8443/console
 
-Server: pingdirectory
-User: Administrator
-Pwd: 2FederateM0re
+* Server: pingdirectory
+* User: Administrator
+* Pwd: 2FederateM0re
 
-Things of note:
 PingFederate needs a couple of additional options:
 
 * Virtual Host -- `pingfederate`  (Used for the backchannel ATV call from PD)
 * OAuth AS --> Allowed Origins -- `https://${DELEGATOR_PUBLIC_URL}`  (Used to allow Delegator to call OIDC endpoints)
+* PingLogon client is configured for Implicit and a wildcard `redirect_uri`
 
 Environment variables in the `docker-compose.yaml` can be modified to inject the correct locations into this stack
 
