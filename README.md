@@ -25,5 +25,7 @@ Pwd: 2FederateM0re
 Things of note:
 PingFederate needs a couple of additional options:
 
-Virtual Host -- `pingfederate`  (Used for the backchannel ATV call from PD)
-OAuth AS --> Allowed Origins -- `https://localhost:1443`  (Used to allow Delegator to call OIDC endpoints)
+* Virtual Host -- `pingfederate`  (Used for the backchannel ATV call from PD)
+* OAuth AS --> Allowed Origins -- `https://${DELEGATOR_PUBLIC_URL}`  (Used to allow Delegator to call OIDC endpoints)
+
+Environment variables in the `docker-compose.yaml` can be modified to inject the correct locations into this stack
