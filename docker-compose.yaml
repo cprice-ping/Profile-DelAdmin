@@ -10,6 +10,8 @@ services:
       - VERBOSE=false
       # BaseURL of the PingFed service
       - PF_BASE_URL=https://localhost:9031
+      # URL of the Delegated Admin app
+      - DELEGATOR_PUBLIC_URL=https://localhost:1443
     env_file:
       # Configuration file created when setup.sh (Getting-started project root directory) is first run to source
       # devops user/key details for evaluation licenses and for docker image/git tags
