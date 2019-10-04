@@ -16,7 +16,7 @@ This is a Super Admin that can see and manage **all** Users and Groups.
 This stack can be used as the basis of Delegated Admin Use Cases.
 
 Delegated Objects are managed using the PingData console:
-https://localhost:8443/console
+https://{{PingDataConsole}}:8443/console
 
 * Server: `pingdirectory`
 * User: `Administrator`
