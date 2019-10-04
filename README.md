@@ -1,6 +1,7 @@
 This Server profile shows a complete install of PF \ PD with the Delegated Administator service and application configured.
 
 The Delegator is installed and delivered via PingDirectory.  
+
 https://{{pingdirectory}}:1443/delegator
 
 PingFed is configured with 2 OAuth clients:
@@ -15,7 +16,8 @@ This is a Super Admin that can see and manage **all** Users and Groups.
 
 This stack can be used as the basis of Delegated Admin Use Cases.
 
-Delegated Objects are managed using the PingData console:
+Delegated Objects are managed using the PingData console:  
+
 https://{{PingDataConsole}}:8443/console
 
 * Server: `pingdirectory`
