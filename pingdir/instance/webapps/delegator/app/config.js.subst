@@ -5,7 +5,7 @@
 */
 
 // The hostname for the Ping Federate instance used with this app.
-window.PF_HOST = '${PF_ISSUER}';
+window.PF_HOST = '${PF_BASE_HOST}';
 
 // The port for the Ping Federate instance used with this app.
 window.PF_PORT = '9031';
