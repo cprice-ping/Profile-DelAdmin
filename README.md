@@ -2,7 +2,7 @@ This Server profile shows a complete install of PF \ PD with the Delegated Admin
 
 The Delegator is installed and delivered via PingDirectory.  
 
-https://{{pingdirectory}}:1443/delegator
+`https://{{pingdirectory}}:1443/delegator`
 
 PingFed is configured with 2 OAuth clients:
 * PingLogon -- used to authenticate a user and issue tokens (AuthZ Code \ Implicit)
@@ -18,7 +18,7 @@ This stack can be used as the basis of Delegated Admin Use Cases.
 
 Delegated Objects are managed using the PingData console:  
 
-https://{{PingDataConsole}}:8443/console
+`https://{{PingDataConsole}}:8443/console`
 
 * Server: `pingdirectory`
 * User: `Administrator`
