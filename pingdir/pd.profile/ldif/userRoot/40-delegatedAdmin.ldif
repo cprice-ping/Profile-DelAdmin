@@ -1,4 +1,9 @@
-dn: uid=superadmin,ou=People,${USER_BASE_DN}
+dn: ou=Administrators,dc=example,dc=com
+objectClass: organizationalUnit
+objectClass: top
+ou: Administrators
+
+dn: uid=superadmin,ou=Administrators,${USER_BASE_DN}
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
@@ -10,7 +15,7 @@ uid: superadmin
 userPassword: 2FederateM0re
 pf-connected-identity: auth-source=pf-local-identity:user-id=superadmin
 
-dn: uid=useradmin,ou=People,${USER_BASE_DN}
+dn: uid=useradmin,ou=Administrators,${USER_BASE_DN}
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
@@ -22,7 +27,7 @@ uid: useradmin
 userPassword: 2FederateM0re
 pf-connected-identity: auth-source=pf-local-identity:user-id=useradmin
 
-dn: uid=groupadmin,ou=People,${USER_BASE_DN}
+dn: uid=groupadmin,ou=Administrators,${USER_BASE_DN}
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
@@ -34,8 +39,8 @@ uid: groupadmin
 userPassword: 2FederateM0re
 pf-connected-identity: auth-source=pf-local-identity:user-id=groupadmin
 
-dn: cn=deladmins,ou=Groups,${USER_BASE_DN}
+dn: cn=deladmins,ou=Administrators,${USER_BASE_DN}
 objectClass: groupOfNames
 objectClass: top
 cn: deladmins
-member: uid=groupadmin,ou=people,${USER_BASE_DN}
+member: uid=groupadmin,ou=Administrators,${USER_BASE_DN}
