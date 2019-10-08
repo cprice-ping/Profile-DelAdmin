@@ -1,14 +1,14 @@
-dn: uid=deladmin,ou=People,${USER_BASE_DN}
+dn: uid=superadmin,ou=People,${USER_BASE_DN}
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
 objectClass: inetOrgPerson
 objectClass: pf-connected-identities
-sn: Delegated
-cn: Delegated Administrator
-uid: deladmin
+sn: Super
+cn: Super Administrator
+uid: superadmin
 userPassword: 2FederateM0re
-pf-connected-identity: auth-source=pf-local-identity:user-id=deladmin
+pf-connected-identity: auth-source=pf-local-identity:user-id=superadmin
 
 dn: uid=useradmin,ou=People,${USER_BASE_DN}
 objectClass: top
