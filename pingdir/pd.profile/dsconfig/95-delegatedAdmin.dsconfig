@@ -31,7 +31,7 @@ dsconfig set-rest-resource-type-prop --type-name users --add auxiliary-ldap-obje
 dsconfig set-http-servlet-extension-prop --extension-name "Delegated Admin" --set access-token-scope:urn:pingidentity:directory-delegated-admin --set "response-header:Cache-Control: no-cache, no-store, must-revalidate" --set "response-header:Expires: 0" --set "response-header:Pragma: no-cache" --set access-token-validator:PingFederate
 
 dsconfig create-delegated-admin-rights --rights-name "Delegated Super Admin" --set enabled:true --set admin-user-dn:uid=deladmin,ou=people,${USER_BASE_DN} 
-dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Super Admin" --rest-resource-type users --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update
+dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Super Admin" --rest-resource-type users --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:read --set admin-permission:update
 dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Super Admin" --rest-resource-type groups --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update
 
  
