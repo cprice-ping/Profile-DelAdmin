@@ -37,5 +37,5 @@ pf-connected-identity: auth-source=pf-local-identity:user-id=groupadmin
 dn: cn=deladmins,ou=Groups,${USER_BASE_DN}
 objectClass: groupOfNames
 objectClass: top
-cn: group.0
+cn: deladmins
 member: uid=groupadmin,ou=people,${USER_BASE_DN}
