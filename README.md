@@ -42,3 +42,6 @@ PingFederate needs a couple of additional options:
 Environment variables in the `docker-compose.yaml` can be modified to inject the correct locations into this stack
 
 To implement this Use Case, download the `docker-compose.yaml` file and run `docker-compose up -d`
+
+DelAdmin trace logging has been enabled:  
+https://support.pingidentity.com/s/document-item?bundleId=pingdirectory-73&topicId=hld1564011489908.html
