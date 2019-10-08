@@ -17,7 +17,8 @@ A set of PD users are also created and assigned Delegated Administrator roles:
 `UserAdmin` \ `2FederateM0re`
 
 **Group Administrator**  
-`GroupAdmin` \ `2FederateM0re`
+`GroupAdmin` \ `2FederateM0re`  
+This user is a member of the `DelAdmins` group that is used to delegate the Group resources
 
 This stack can be used as the basis of Delegated Admin Use Cases.
 
