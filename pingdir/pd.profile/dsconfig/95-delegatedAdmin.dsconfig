@@ -40,6 +40,7 @@ dsconfig create-delegated-admin-resource-rights --rights-name "Delegated User Ad
 
 dsconfig create-delegated-admin-rights --rights-name "Delegated Group Admin" --set enabled:true --set admin-group-dn:cn=deladmins,ou=Administrators,${USER_BASE_DN}
 dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Group Admin" --rest-resource-type groups --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=groups,${USER_BASE_DN}
+dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Group Admin" --rest-resource-type groups --set enabled:true --set admin-permission:read --set resource-subtree:ou=people,dc=example,dc=com 
 
 # Enable Logging
 dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target-name com.unboundid.directory.server.http --set debug-level:VERBOSE
