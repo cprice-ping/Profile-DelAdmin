@@ -16,4 +16,6 @@ changetype: modify
 delete: aci
 aci: (targetattr!="userPassword")(version 3.0; acl "Allow anonymous read access for anyone"; allow (read,search,compare) userdn="ldap:///anyone";)
 aci: (targetattr="*")(version 3.0; acl "Allow users to update their own entries"; allow (write) userdn="ldap:///self";)
-
+-
+add: aci
+aci: (targetattr="userPassword")(version 3.0; acl "Allow users to update their own password"; allow (write) userdn="ldap:///self";)

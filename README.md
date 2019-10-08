@@ -8,11 +8,19 @@ PingFed is configured with 2 OAuth clients:
 * PingLogon -- used to authenticate a user and issue tokens (AuthZ Code \ Implicit)
 * PingIntrospect -- used to validate tokens (PD has a PF Access Token Validator pointing to this client)
 
-A PD user is also created and assigned Delegated Administrator roles
+A set of PD users are also created and assigned Delegated Administrator roles:
 
-`DelAdmin` \ `2FederateM0re`
+These users are created in `ou=Administrators` to demonstrate separating the Admins from the objects they have rights to.
 
-This is a Super Admin that can see and manage **all** Users and Groups.
+**Super Administrator**  
+`SuperAdmin` \ `2FederateM0re`
+
+**User Administrator**  
+`UserAdmin` \ `2FederateM0re`
+
+**Group Administrator**  
+`GroupAdmin` \ `2FederateM0re`  
+This user is a member of the `DelAdmins` group that is used to delegate the Group resources
 
 This stack can be used as the basis of Delegated Admin Use Cases.
 
@@ -34,3 +42,6 @@ PingFederate needs a couple of additional options:
 Environment variables in the `docker-compose.yaml` can be modified to inject the correct locations into this stack
 
 To implement this Use Case, download the `docker-compose.yaml` file and run `docker-compose up -d`
+
+DelAdmin trace logging has been enabled:  
+https://support.pingidentity.com/s/document-item?bundleId=pingdirectory-73&topicId=hld1564011489908.html
