@@ -1,8 +1,8 @@
 # The search-base-dn value is the DN of a valid base entry where
 # managed users are stored.
 #
-dsconfig create-rest-resource-type --type user --type-name users --set "display-name:Users" --set enabled:false --set "search-base-dn:${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:users --set "search-filter-pattern:(|(cn=*%%*)(mail=%%*)(uid=%%*)(sn=*%%*))" --set structural-ldap-objectclass:inetOrgPerson --set "parent-dn:ou=people,${USER_BASE_DN}"
-dsconfig create-rest-resource-type --type group --type-name groups --set "display-name:Groups" --set enabled:false --set "search-base-dn:${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:groups --set "search-filter-pattern:(cn=*%%*)" --set structural-ldap-objectclass:groupOfNames --set "parent-dn:${USER_BASE_DN}"
+dsconfig create-rest-resource-type --type user --type-name users --set "display-name:Users" --set enabled:false --set "search-base-dn:ou=people,${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:users --set "search-filter-pattern:(|(cn=*%%*)(mail=%%*)(uid=%%*)(sn=*%%*))" --set structural-ldap-objectclass:inetOrgPerson --set "parent-dn:ou=people,${USER_BASE_DN}" --set resource-subtree:ou=people,${USER_BASE_DN}
+dsconfig create-rest-resource-type --type group --type-name groups --set "display-name:Groups" --set enabled:false --set "search-base-dn:ou=groups,${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:groups --set "search-filter-pattern:(cn=*%%*)" --set structural-ldap-objectclass:groupOfNames --set "parent-dn:ou=groups,${USER_BASE_DN}" --set resource-subtree:ou=groups,${USER_BASE_DN}
 
 #
 # These attributes are to be made accessible through the Delegated Admin API.
