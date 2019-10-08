@@ -9,3 +9,27 @@ cn: Delegated Administrator
 uid: deladmin
 userPassword: 2FederateM0re
 pf-connected-identity: auth-source=pf-local-identity:user-id=deladmin
+
+dn: uid=useradmin,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: pf-connected-identities
+sn: User
+cn: User Administrator
+uid: useradmin
+userPassword: 2FederateM0re
+pf-connected-identity: auth-source=pf-local-identity:user-id=useradmin
+
+dn: uid=groupadmin,ou=People,${USER_BASE_DN}
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: pf-connected-identities
+sn: Group
+cn: Group Administrator
+uid: groupadmin
+userPassword: 2FederateM0re
+pf-connected-identity: auth-source=pf-local-identity:user-id=groupadmin

@@ -12,7 +12,7 @@ A PD user is also created and assigned Delegated Administrator roles
 
 `DelAdmin` \ `2FederateM0re`
 
-This is a Super Admin that can see and manage **all** Users and Groups.
+This is a Super Admin that can see and manage **all** Users and Groups 
 
 This stack can be used as the basis of Delegated Admin Use Cases.
 
