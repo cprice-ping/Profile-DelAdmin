@@ -10,6 +10,8 @@ PingFed is configured with 2 OAuth clients:
 
 A set of PD users are also created and assigned Delegated Administrator roles:
 
+These users are created in `ou=Administrators` to demonstrate separating the Admins from the objects they have rights to.
+
 **Super Administrator**  
 `SuperAdmin` \ `2FederateM0re`
 
