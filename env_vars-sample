@@ -1,4 +1,5 @@
 # Base DN of PD Users
+USER_ORG_BASE=example.com
 USER_BASE_DN=dc=example.com
 
 # BaseURL of the PingFed service
@@ -6,11 +7,10 @@ PF_BASE_URL=https://ext-docker.cpricelab.com:9031
 
 # Delegated Admin app locations
 DELEGATOR_PUBLIC_URL=https://int-docker.cpricelab.com:1443/delegator
-PD_DELEGATOR_PUBLIC_HOSTNAME=int-docker.cpricelab.com
+PD_DELEGATOR_PUBLIC_HOSTNAME=https://int-docker.cpricelab.com:1443
 
 # PF Issuer of the Delegated Admin OIDC app
 PF_ISSUER=https://ext-docker.cpricelab.com:9031
 
 # Base Hostname of the PingFed service being used for Delegated Admin
 PF_BASE_HOST=ext-docker.cpricelab.com
-PD_DELEGATOR_PUBLIC_HOSTNAME=int-docker.cpricelab.com
