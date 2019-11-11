@@ -2,21 +2,17 @@ version: "2"
 
 services:
   pingfederate:
-    image: pingidentity/pingfederate:${PING_IDENTITY_DEVOPS_TAG}
+    image: pingidentity/pingfederate:edge
     command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
     environment:
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-DelAdmin.git
       - SERVER_PROFILE_PATH=pingfed
       - VERBOSE=false
-      # BaseURL of the PingFed service
-      - PF_BASE_URL={{PingFed BaseURL}}
-      # URL of the Delegated Admin app
-      - DELEGATOR_PUBLIC_URL={{URL of Delegator App}}
-      - PD_DELEGATOR_PUBLIC_HOSTNAME={{Host of the Delgator App}}
     env_file:
       # Configuration file created when setup.sh (Getting-started project root directory) is first run to source
       # devops user/key details for evaluation licenses and for docker image/git tags
       - ~/.pingidentity/devops
+      - ./env_vars
     # Example: Examples below for mounting local directories for inbound server profile and persisting
     #          server build.  The local /opt/out directory must be empty when building new server
     #             /opt/out - Resulting server build
@@ -31,20 +27,16 @@ services:
       - pingnet
 
   pingdirectory:
-    image: pingidentity/pingdirectory:${PING_IDENTITY_DEVOPS_TAG}
+    image: pingidentity/pingdirectory:edge
     environment:
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-DelAdmin.git
       - SERVER_PROFILE_PATH=pingdir
       - SERVER_PROFILE_PARENT=BASELINE
-      - SERVER_PROFILE_BASELINE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
-      - SERVER_PROFILE_BASELINE_PATH=baseline/pingdirectory
-      # PF Issuer of the Delegated Admin OIDC app
-      - PF_ISSUER={{PingFed OIDC Issuer}}
-      # Base Hostname of the PingFed service being used for Delegated Admin
-      - PF_BASE_HOST={{PF BaseURL}}
-
+      - SERVER_PROFILE_BASELINE_URL=https://github.com/cprice-ping/Profile-PD-Base.git
+      - SERVER_PROFILE_BASELINE_PATH=pingdir
     env_file:
       - ~/.pingidentity/devops
+      - ./env_vars
     #volumes:
     #   - ${HOME}/projects/devops/volumes/simple-sync.pingdirectory:/opt/out
     #   - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingdirectory:/opt/in
@@ -56,7 +48,7 @@ services:
       - pingnet
                     
   pingdataconsole:
-    image: pingidentity/pingdataconsole:${PING_IDENTITY_DEVOPS_TAG}
+    image: pingidentity/pingdataconsole:edge
     ports:
       - 8443:8443
     networks:
