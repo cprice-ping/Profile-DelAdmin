@@ -1,4 +1,4 @@
-dn: ou=Administrators,dc=example,dc=com
+dn: ou=Administrators,${USER_BASE_DN}
 objectClass: organizationalUnit
 objectClass: top
 ou: Administrators
