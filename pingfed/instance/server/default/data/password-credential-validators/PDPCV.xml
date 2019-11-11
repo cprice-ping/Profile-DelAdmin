@@ -2,8 +2,8 @@
 <urn:PluginConfiguration isInheritExtendedContractAttributes="false" name="PD PCV" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
     <urn:Fields>
         <urn:Field name="LDAP Datastore">LDAP-D803C87FAB2ADFB4B0A947B64BA6F0C6093A5CA3</urn:Field>
-        <urn:Field name="Search Base">dc=example,dc=com</urn:Field>
-        <urn:Field name="Search Filter">(|(uid=${username})(mail=${username}))</urn:Field>
+        <urn:Field name="Search Base">${USER_BASE_DN}</urn:Field>
+        <urn:Field name="Search Filter">(|(uid=${_DOLLAR_}{username})(mail=${_DOLLAR_}{username}))</urn:Field>
         <urn:Field name="Scope of Search">Subtree</urn:Field>
         <urn:Field name="Case-Sensitive Matching">true</urn:Field>
         <urn:Field name="Display Name Attribute">displayName</urn:Field>
