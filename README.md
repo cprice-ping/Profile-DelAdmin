@@ -2,7 +2,7 @@ This Server profile shows a complete install of PF \ PD with the Delegated Admin
 
 The Delegator is installed and delivered via PingDirectory.  
 
-`https://{{PingDirectory}}:1443/delegator`
+`https://{{PD_DELEGATOR_PUBLIC_HOSTNAME}}:1443/delegator`
 
 PingFed is configured with 2 OAuth clients:
 * PingLogon -- used to authenticate a user and issue tokens (AuthZ Code \ Implicit)
@@ -35,11 +35,11 @@ Delegated Objects are managed using the PingData console:
 PingFederate needs a couple of additional options:
 
 * Virtual Host -- `pingfederate`  (Used for the backchannel ATV call from PD)
-* OAuth AS --> Allowed Origins -- `https://${DELEGATOR_PUBLIC_URL}`  (Used to allow Delegator to call OIDC endpoints)
+* OAuth AS --> Allowed Origins -- `https://${PD_DELEGATOR_PUBLIC_HOSTNAME}`  (Used to allow Delegator to call OIDC endpoints)
 * PingLogon client is configured for Implicit and a wildcard `redirect_uri`
 
 ## Deployment - Docker Compose
-Environment variables in the `docker-compose.yaml` can be modified to inject the correct locations into this stack
+Environment variables in the `env_vars-sample` can be modified to inject the correct locations into this stack. Rename this to `env_vars` for it to be read by `docker-compose.yaml`
 
 To implement this Use Case, download the `docker-compose.yaml` file and run `docker-compose up -d`
 
