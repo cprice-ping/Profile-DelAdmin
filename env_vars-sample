@@ -1,3 +1,6 @@
+# Acceptance of the Ping Identity EULA
+PING_IDENTITY_ACCEPT_EULA=YES
+
 # Base DN of PD Users
 USER_ORG_BASE=example.com
 USER_BASE_DN=dc=example.com
@@ -6,12 +9,10 @@ USER_BASE_DN=dc=example.com
 PF_BASE_URL=https://ext-docker.cpricelab.com:9031
 
 # Delegated Admin app locations
-DELEGATOR_PUBLIC_URL=https://int-docker.cpricelab.com:1443/delegator
-PD_DELEGATOR_PUBLIC_HOSTNAME=https://int-docker.cpricelab.com:1443
+DELEGATOR_PUBLIC_URL=http://ext-docker.cpricelab.com/delegator
 
 # PF details forthe Delegated Admin OIDC app
-# PF_ISSUER=https://ext-docker.cpricelab.com:9031
-PF_HOST=https://ext-docker.cpricelab.com
+PF_HOST=ext-docker.cpricelab.com
 PF_PORT=9031
 PF_CLIENT_ID=PingLogon
 
