@@ -9,8 +9,11 @@ PF_BASE_URL=https://ext-docker.cpricelab.com:9031
 DELEGATOR_PUBLIC_URL=https://int-docker.cpricelab.com:1443/delegator
 PD_DELEGATOR_PUBLIC_HOSTNAME=https://int-docker.cpricelab.com:1443
 
-# PF Issuer of the Delegated Admin OIDC app
-PF_ISSUER=https://ext-docker.cpricelab.com:9031
+# PF details forthe Delegated Admin OIDC app
+# PF_ISSUER=https://ext-docker.cpricelab.com:9031
+PF_HOST=https://ext-docker.cpricelab.com
+PF_PORT=9031
+PF_CLIENT_ID=PingLogon
 
 # Base Hostname of the PingFed service being used for Delegated Admin
 PF_BASE_HOST=ext-docker.cpricelab.com
