@@ -10,5 +10,5 @@
         <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
     </urn:ApcToUserKeyMapping>
     <urn:ReuseExistingPersistentGrantForGrant>implicit</urn:ReuseExistingPersistentGrantForGrant>
-    <urn:allowedOrigins>${PD_DELEGATOR_PUBLIC_HOSTNAME}</urn:allowedOrigins>
+    <urn:allowedOrigins>${DELEGATOR_PUBLIC_URL}</urn:allowedOrigins>
 </urn:OAuthConfig>

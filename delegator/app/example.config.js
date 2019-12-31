@@ -22,13 +22,13 @@ window.DADMIN_CLIENT_ID = 'dadmin';
 // is hosted alongside your DS instance, in which case it does not need to be specified. Only change
 // this variable if you are hosting this application elsewhere.
 // DEFAULT: window.DS_HOST = undefined;
-// window.DS_HOST = undefined;
+window.DS_HOST = pingdirectory;
 
 // The HTTPS port for the DS instance the app will be interfacing with. By default, the app assumes
 // it is hosted alongside your DS instance, in which case it does not need to be specified. Only
 // change this variable if you are hosting this application elsewhere.
 // DEFAULT: window.DS_PORT = undefined;
-// window.DS_PORT = undefined;
+window.DS_PORT = 1443;
 
 // The length of time (in minutes) until the session will require a new login attempt
 // DEFAULT: window.TIMEOUT_LENGTH_MINS = 30;
@@ -57,5 +57,5 @@ window.PD_DADMIN_CONFIG = {
    * PingFederate and you wish to use it to show the current user's name in the navigation.
    * DEFAULT: false
    */
-  PROFILE_SCOPE_ENABLED: false,
+  PROFILE_SCOPE_ENABLED: true,
 };
