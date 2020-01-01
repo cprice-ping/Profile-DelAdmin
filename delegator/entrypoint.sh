@@ -4,9 +4,9 @@
 #
 
 if test "${1}" = "start-server" ; then
-    ${PF_HOST:=localhost}
-    ${PF_PORT:=9031}
-    ${PF_CLIENT_ID:=dadmin}
+#    ${PF_HOST:=localhost}
+#    ${PF_PORT:=9031}
+#    ${PF_CLIENT_ID:=dadmin}
 
     echo "
 ##################################################################################
@@ -18,6 +18,8 @@ if test "${1}" = "start-server" ; then
 #       PF_HOST: ${PF_HOST}
 #       PF_PORT: ${PF_PORT}
 #       PF_CLIENT_ID: ${PF_CLIENT_ID}
+#       PD_HOST: ${PF_HOST}
+#       PD_PORT: ${PF_PORT}
 # 
 #     To set via a docker run or .yaml just set them using examples below
 #
@@ -28,7 +30,7 @@ if test "${1}" = "start-server" ; then
 #
 #      To use with '.yaml' file (use snippet below)
 #
-#    pingdirectry:
+#    pingdirectory:
 #       environment: PF_HOST=myhost.mydomain.com
 ##################################################################################
 "
@@ -38,8 +40,8 @@ if test "${1}" = "start-server" ; then
     sed -e "s/PF_HOST = 'localhost'/PF_HOST = '${PF_HOST}'/" \
         -e "s/PF_PORT = '9031'/PF_PORT = '${PF_PORT}'/" \
         -e "s/DADMIN_CLIENT_ID = 'dadmin'/DADMIN_CLIENT_ID = '${PF_CLIENT_ID}'/" \
-        -e "s/\/\/  window.DS_HOST = 'undefined';/window.DS_HOST = '${PD_HOST}'/" \
-        -e "s/\/\/  window.DS_PORT = 'undefined';/window.DS_PORT = '${PD_PORT}'/" \
+        -e "s#// window.DS_HOST = 'undefined'#window.DS_HOST = '${PD_HOST}'#" \
+        -e "s#// window.DS_PORT = 'undefined'#window.DS_PORT = '${PD_PORT}'#" \
         "example.config.js" > "config.js"
 
     chmod 644 "config.js"

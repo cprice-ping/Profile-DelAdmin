@@ -1,3 +1,6 @@
+# Add DelAdmin API to the HTTPS Connection Handler
+dsconfig set-connection-handler-prop --handler-name "HTTPS Connection Handler" --add "http-servlet-extension:Delegated Admin" 
+
 # The search-base-dn value is the DN of a valid base entry where
 # managed users are stored.
 #
