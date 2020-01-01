@@ -8,13 +8,17 @@ USER_BASE_DN=dc=example.com
 # BaseURL of the PingFed service
 PF_BASE_URL=https://ext-docker.cpricelab.com:9031
 
-# Delegated Admin app locations
-DELEGATOR_PUBLIC_HOST=http://ext-docker.cpricelab.com
+# Delegated Admin app CORS 
+DELEGATOR_CORS_URL=http://ext-docker.cpricelab.com
 
-# PF details forthe Delegated Admin OIDC app
+# PF details for the Delegated Admin OIDC app
 PF_HOST=ext-docker.cpricelab.com
 PF_PORT=9031
 PF_CLIENT_ID=PingLogon
+
+# PD details for Delegator CORS
+PD_HOST=ext-docker.cpricelab.com
+PD_PORT=1443
 
 # Base Hostname of the PingFed service being used for Delegated Admin
 PF_BASE_HOST=ext-docker.cpricelab.com
