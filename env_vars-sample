@@ -9,7 +9,7 @@ USER_BASE_DN=dc=example.com
 PF_BASE_URL=https://ext-docker.cpricelab.com:9031
 
 # Delegated Admin app locations
-DELEGATOR_PUBLIC_URL=http://ext-docker.cpricelab.com/delegator
+DELEGATOR_PUBLIC_HOST=http://ext-docker.cpricelab.com
 
 # PF details forthe Delegated Admin OIDC app
 PF_HOST=ext-docker.cpricelab.com
