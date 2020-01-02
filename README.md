@@ -1,8 +1,12 @@
 This Server profile shows a complete install of PF \ PD with the Delegated Administator service and application configured.
 
-The Delegator App is installed and delivered behind an NGINX service. 
+The Delegator App is delivered behind an NGINX service. 
 
 `http://{DELEGATOR_PUBLIC_URL}/delegator`
+
+**Note:** If you are using self-signed certs in PD, you'll first need to create an exception for it in your browser. Without it, Delegator will fail with a CORS error (it's not CORS - it's SSL Validation that's failing).
+
+Connect to `https://${PD_HOST}:${PD_PORT}/dadmin/v2/resourceTypes` to create the exception
 
 PingFed is configured with 2 OAuth clients:
 * PingLogon -- used to authenticate a user and issue tokens (AuthZ Code \ Implicit)
@@ -35,7 +39,7 @@ Delegated Objects are managed using the PingData console:
 PingFederate needs a couple of additional options:
 
 * Virtual Host -- `pingfederate`  (Used for the backchannel ATV call from PD)
-* OAuth AS --> Allowed Origins -- `https://${DELEGATOR_PUBLIC_URL}`  (Used to allow Delegator to call OIDC endpoints)
+* OAuth AS --> Allowed Origins -- `https://${DELEGATOR_CORS_URL}`  (Used to allow Delegator to call OIDC endpoints)
 * PingLogon client is configured for Implicit and a wildcard `redirect_uri`
 
 ## Deployment - Docker Compose
