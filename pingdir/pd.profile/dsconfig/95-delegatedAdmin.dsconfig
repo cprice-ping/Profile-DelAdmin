@@ -1,5 +1,6 @@
-# Add DelAdmin API to the HTTPS Connection Handler
+# Enable Delegated Admin Servlet
 dsconfig set-connection-handler-prop --handler-name "HTTPS Connection Handler" --add "http-servlet-extension:Delegated Admin" 
+dsconfig set-http-servlet-extension-prop --extension-name "Delegated Admin" --set access-token-scope:urn:pingidentity:directory-delegated-admin --set "response-header:Cache-Control: no-cache, no-store, must-revalidate" --set "response-header:Expires: 0" --set "response-header:Pragma: no-cache" --set access-token-validator:PingFederate
 
 # The search-base-dn value is the DN of a valid base entry where
 # managed users are stored.
@@ -29,9 +30,7 @@ dsconfig set-rest-resource-type-prop --type-name users --set enabled:true
 dsconfig set-rest-resource-type-prop --type-name groups --set enabled:true 
 
 # Configure Users for PF Self-Service
-# dsconfig set-rest-resource-type-prop --type-name users --add auxiliary-ldap-objectclass:pf-connected-identities --set post-create-constructed-attribute:pf-connected-identity
-
-dsconfig set-http-servlet-extension-prop --extension-name "Delegated Admin" --set access-token-scope:urn:pingidentity:directory-delegated-admin --set "response-header:Cache-Control: no-cache, no-store, must-revalidate" --set "response-header:Expires: 0" --set "response-header:Pragma: no-cache" --set access-token-validator:PingFederate
+dsconfig set-rest-resource-type-prop --type-name users --add auxiliary-ldap-objectclass:pf-connected-identities --set post-create-constructed-attribute:pf-connected-identity
 
 # Add some Delegated Administrators
 dsconfig create-delegated-admin-rights --rights-name "Super Admin" --set enabled:true --set admin-user-dn:uid=superadmin,ou=Administrators,${USER_BASE_DN} 
@@ -50,6 +49,7 @@ dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target
 dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target-name com.unboundid.directory.server.extensions.dadmin --set debug-level:VERBOSE
 dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target-name com.unboundid.directory.broker.api --set debug-level:VERBOSE
 
+## Configuration for New User Email Notification -- https://docs.pingidentity.com/bundle/pingdirectory-80/page/qsv1576274099861.html
 # Request search for Emailing new Users
 dsconfig create-request-criteria --criteria-name "Delegated Admin User Creation Request Criteria" --type simple --set operation-type:add --set "included-target-entry-dn:ou=people,${USER_BASE_DN}" --set "any-included-target-entry-filter:(objectClass=inetOrgPerson)" --set "included-application-name:PingDirectory Delegated Admin"
 
@@ -64,5 +64,5 @@ dsconfig set-password-policy-prop --policy-name "Default Password Policy" --set 
 dsconfig create-external-server --server-name "SMTP Server" --type smtp --set server-host-name:smtp
 dsconfig set-global-configuration-prop --set "smtp-server:SMTP Server"
 
-# Enable Referential Integrity plug-in -- https://docs.pingidentity.com/bundle/pingdirectory-80/page/pjq1564011490754.html
-bin/dsconfig set-plugin-prop --plugin-name "Referential Integrity" --set enabled:true
+## Enable Referential Integrity plug-in -- https://docs.pingidentity.com/bundle/pingdirectory-80/page/pjq1564011490754.html
+dsconfig set-plugin-prop --plugin-name "Referential Integrity" --set enabled:true
