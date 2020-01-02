@@ -37,9 +37,9 @@ if test "${1}" = "start-server" ; then
 
     cd /usr/share/nginx/html/delegator || echo "Unable to cd to the delegator html directory"
 
-    sed -e "s/PF_HOST = 'localhost'/PF_HOST = '${PF_HOST}'/" \
-        -e "s/PF_PORT = '9031'/PF_PORT = '${PF_PORT}'/" \
-        -e "s/DADMIN_CLIENT_ID = 'dadmin'/DADMIN_CLIENT_ID = '${PF_CLIENT_ID}'/" \
+    sed -e "s#PF_HOST = 'localhost'#PF_HOST = '${PF_HOST}'#" \
+        -e "s#PF_PORT = '9031'#PF_PORT = '${PF_PORT}'#" \
+        -e "s#DADMIN_CLIENT_ID = 'dadmin'#DADMIN_CLIENT_ID = '${PF_CLIENT_ID}'#" \
         -e "s#// window.DS_HOST = 'undefined'#window.DS_HOST = '${PD_HOST}'#" \
         -e "s#// window.DS_PORT = 'undefined'#window.DS_PORT = '${PD_PORT}'#" \
         "example.config.js" > "config.js"
