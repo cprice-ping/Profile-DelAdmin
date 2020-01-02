@@ -53,6 +53,13 @@ dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target
 # Request search for Emailing new Users
 dsconfig create-request-criteria --criteria-name "Delegated Admin User Creation Request Criteria" --type simple --set operation-type:add --set "included-target-entry-dn:ou=people,${USER_BASE_DN}" --set "any-included-target-entry-filter:(objectClass=inetOrgPerson)" --set "included-application-name:PingDirectory Delegated Admin"
 
+# Create Notification Handler
+dsconfig create-account-status-notification-handler --handler-name "Delegated Admin Email Account Status Notification Handler" --type multi-part-email --set enabled:true --set "account-creation-notification-request-criteria:Delegated Admin User Creation Request Criteria" --set account-created-message-template:config/account-status-notification-email-templates/delegated-admin-account-created.template
+dsconfig set-account-status-notification-handler-prop --handler-name "Delegated Admin Email Account Status Notification Handler" --set enabled:true
+
+# Create Password Policy with Notification
+dsconfig set-password-policy-prop --policy-name "Default Password Policy" --set "account-status-notification-handler:Delegated Admin Email Account Status Notification Handler"
+
 # Configure external SMTP Service
 dsconfig create-external-server --server-name "SMTP Server" --type smtp --set server-host-name:smtp
 dsconfig set-global-configuration-prop --set "smtp-server:SMTP Server"
