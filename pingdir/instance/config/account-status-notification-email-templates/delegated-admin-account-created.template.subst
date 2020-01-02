@@ -11,7 +11,7 @@
 ## IMPORTANT: Uncomment the following line and change the URL to the
 ## Profile Management Endpoint of your PingFederate Local Identity Profile.
 ##
-set($profile_management_url = "${PF_BASE_URL}/pf/idprofile.ping?LocalIdentityProfileID=6erQUrLapZ01ITU7")
+#set($profile_management_url = "${PF_BASE_URL}/pf/idprofile.ping?LocalIdentityProfileID=6erQUrLapZ01ITU7")
 
 
 ## Populate the values of any other variables that will appear in the body of
