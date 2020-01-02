@@ -49,3 +49,10 @@ dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Group A
 dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target-name com.unboundid.directory.server.http --set debug-level:VERBOSE
 dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target-name com.unboundid.directory.server.extensions.dadmin --set debug-level:VERBOSE
 dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target-name com.unboundid.directory.broker.api --set debug-level:VERBOSE
+
+# Request search for Emailing new Users
+dsconfig create-request-criteria --criteria-name "Delegated Admin User Creation Request Criteria" --type simple --set operation-type:add --set "included-target-entry-dn:ou=people,${USER_BASE_DN}" --set "any-included-target-entry-filter:(objectClass=inetOrgPerson)" --set "included-application-name:PingDirectory Delegated Admin"
+
+# Configure external SMTP Service
+dsconfig create-external-server --server-name "SMTP Server" --type smtp --set server-host-name:smtp
+dsconfig set-global-configuration-prop --set "smtp-server:SMTP Server"
