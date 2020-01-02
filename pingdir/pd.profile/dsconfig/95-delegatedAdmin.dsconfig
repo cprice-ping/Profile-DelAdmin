@@ -30,7 +30,7 @@ dsconfig set-rest-resource-type-prop --type-name users --set enabled:true
 dsconfig set-rest-resource-type-prop --type-name groups --set enabled:true 
 
 # Configure Users for PF Self-Service
-dsconfig set-rest-resource-type-prop --type-name users --add auxiliary-ldap-objectclass:pf-connected-identities --set post-create-constructed-attribute:pf-connected-identity
+# dsconfig set-rest-resource-type-prop --type-name users --add auxiliary-ldap-objectclass:pf-connected-identities --set post-create-constructed-attribute:pf-connected-identity
 
 # Add some Delegated Administrators
 dsconfig create-delegated-admin-rights --rights-name "Super Admin" --set enabled:true --set admin-user-dn:uid=superadmin,ou=Administrators,${USER_BASE_DN} 
