@@ -63,3 +63,6 @@ dsconfig set-password-policy-prop --policy-name "Default Password Policy" --set 
 # Configure external SMTP Service
 dsconfig create-external-server --server-name "SMTP Server" --type smtp --set server-host-name:smtp
 dsconfig set-global-configuration-prop --set "smtp-server:SMTP Server"
+
+# Enable Referential Integrity plug-in -- https://docs.pingidentity.com/bundle/pingdirectory-80/page/pjq1564011490754.html
+bin/dsconfig set-plugin-prop --plugin-name "Referential Integrity" --set enabled:true
