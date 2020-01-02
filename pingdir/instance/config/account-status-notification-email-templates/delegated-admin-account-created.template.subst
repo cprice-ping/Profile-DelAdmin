@@ -11,21 +11,21 @@
 ## IMPORTANT: Uncomment the following line and change the URL to the
 ## Profile Management Endpoint of your PingFederate Local Identity Profile.
 ##
-#set($profile_management_url = "${PF_BASE_URL}/pf/idprofile.ping?LocalIdentityProfileID=6erQUrLapZ01ITU7")
+#set(${_DOLLAR_}profile_management_url = "${PF_BASE_URL}/pf/idprofile.ping?LocalIdentityProfileID=6erQUrLapZ01ITU7")
 
 
 ## Populate the values of any other variables that will appear in the body of
 ## the email message.
-#getAttributeValue($account_entry, "uid", "username")
+#getAttributeValue(${_DOLLAR_}account_entry, "uid", "username")
 #getNotificationPropertyValue("new-generated-password", "generated_password")
 #getNotificationPropertyValue("new-password", "new_password")
 #getNotificationPropertyValue("must-change-password", "must_change_password")
 #getNotificationPropertyValue("maximum-password-reset-age", "maximum_password_reset_age")
 
-#if($generated_password)
-  #set ($password = $generated_password)
-#elseif($new_password)
-  #set ($password = $new_password)
+#if(${_DOLLAR_}generated_password)
+  #set (${_DOLLAR_}password = ${_DOLLAR_}generated_password)
+#elseif(${_DOLLAR_}new_password)
+  #set (${_DOLLAR_}password = ${_DOLLAR_}new_password)
 #end
 
 
@@ -36,8 +36,8 @@
 #parse("common-header-fields.vm")
 
 ## The subject for the generated email message.
-#set($subject = "Your account has been created")
-SUBJECT: $subject
+#set(${_DOLLAR_}subject = "Your account has been created")
+SUBJECT: ${_DOLLAR_}subject
 
 
 
@@ -47,21 +47,21 @@ SUBJECT: $subject
 ## body for all types of account status notifications.
 #parse("common-plain-text-body-header.vm")
 
-#if($password)
-Your account has been created with a username of $username and a password of $password.
+#if(${_DOLLAR_}password)
+Your account has been created with a username of ${_DOLLAR_}username and a password of ${_DOLLAR_}password.
 #else
-Your account has been created with a username of $username.
+Your account has been created with a username of ${_DOLLAR_}username.
 #end
 
-#if($profile_management_url)
+#if(${_DOLLAR_}profile_management_url)
 Manage your profile:
-$profile_management_url
+${_DOLLAR_}profile_management_url
 #end
 
-#if($must_change_password == "true")
+#if(${_DOLLAR_}must_change_password == "true")
 
-#if($maximum_password_reset_age)
-You will be required to choose a new password the first time you log in. You must do so within the next $maximum_password_reset_age or your account will be locked again.
+#if(${_DOLLAR_}maximum_password_reset_age)
+You will be required to choose a new password the first time you log in. You must do so within the next ${_DOLLAR_}maximum_password_reset_age or your account will be locked again.
 #else
 You will be required to choose a new password the first time you log in.
 #end
@@ -76,7 +76,7 @@ You will be required to choose a new password the first time you log in.
 
 <html>
   <head>
-    <title>$subject</title>
+    <title>${_DOLLAR_}subject</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   </head>
 
@@ -86,23 +86,23 @@ You will be required to choose a new password the first time you log in.
 #parse("common-html-body-header.vm")
 
     <p>
-#if($password)
-      Your account has been created with a username of $username and a password of $password.
+#if(${_DOLLAR_}password)
+      Your account has been created with a username of ${_DOLLAR_}username and a password of ${_DOLLAR_}password.
 #else
-      Your account has been created with a username of $username.
+      Your account has been created with a username of ${_DOLLAR_}username.
 #end
     </p>
 
-#if($profile_management_url)
+#if(${_DOLLAR_}profile_management_url)
     <p>
-      <a href="$profile_management_url">Manage your profile</a>
+      <a href="${_DOLLAR_}profile_management_url">Manage your profile</a>
     </p>
 #end
 
-#if($must_change_password == "true")
+#if(${_DOLLAR_}must_change_password == "true")
     <p>
-#if($maximum_password_reset_age)
-      You will be required to choose a new password the first time you log in. You must do so within the next $maximum_password_reset_age or your account will be locked again.
+#if(${_DOLLAR_}maximum_password_reset_age)
+      You will be required to choose a new password the first time you log in. You must do so within the next ${_DOLLAR_}maximum_password_reset_age or your account will be locked again.
 #else
       You will be required to choose a new password the first time you log in.
 #end
