@@ -64,5 +64,11 @@ services:
     networks:
       - pingnet
 
+  smtp:
+    image: bytemark/smtp
+    restart: always
+    networks:
+      - pingnet
+
 networks:
     pingnet:
