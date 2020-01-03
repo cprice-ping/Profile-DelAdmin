@@ -57,6 +57,6 @@
         <loc:Attribute fieldName="lastName" datastore-field="sn"/>
         <loc:Attribute fieldName="phoneNumber" datastore-field="mobile"/>
         <loc:Attribute fieldName="userId" datastore-field="uid"/>
-        <loc:Attribute fieldName="email" datastore-field="emailAddress"/>
+        <loc:Attribute fieldName="email" datastore-field="mail"/>
     </loc:datastore-mapping>
 </loc:localIdentity>
