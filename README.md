@@ -6,7 +6,12 @@ The Delegator App is delivered behind an NGINX service.
 
 **Note:** If you are using self-signed certs in PD, you'll first need to create an exception for it in your browser. Without it, Delegator will fail with a CORS error (it's not CORS - it's SSL Validation that's failing).
 
-Connect to `https://${PD_HOST}:${PD_PORT}/dadmin/v2/resourceTypes` to create the exception
+Connect a browser to `https://${PD_HOST}:${PD_PORT}/dadmin/v2/resourceTypes` to create the exception
+
+Delegator can used to generate passwords, and an email notification is sent to the email address of a newly created User.  
+This email contains a link to a PF LIP Profile Management URL -- this can be used to switch from Delegated Admin to Self-Service Account Management
+
+
 
 PingFed is configured with 2 OAuth clients:
 * PingLogon -- used to authenticate a user and issue tokens (AuthZ Code \ Implicit)
