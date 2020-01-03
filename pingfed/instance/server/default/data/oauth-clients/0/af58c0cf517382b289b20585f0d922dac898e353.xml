@@ -7,6 +7,7 @@
         <urn:Grant type="authorization_code"/>
         <urn:RedirectUri>http://changeme.com</urn:RedirectUri>
         <urn:RedirectUri>https://*/delegator/*</urn:RedirectUri>
+        <urn:RedirectUri>http://*/delegator/*</urn:RedirectUri>
         <urn:SupplementalInfo key="ALLOW_EXCLUSIVE_SCOPES" value="true"/>
         <urn:SupplementalInfo key="DEVICE_FLOW_SETTING" value="SERVER_DEFAULT"/>
         <urn:SupplementalInfo key="DEFAULT_ATM_ID" value="jwtHTML"/>

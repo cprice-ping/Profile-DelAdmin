@@ -54,5 +54,20 @@ services:
     networks:
       - pingnet
 
+  pingdelegator:
+    image: pricecs/pingdelegator:4.0
+    env_file:
+      - ./env_vars
+    ports:
+      - 80:80
+    networks:
+      - pingnet
+
+  smtp:
+    image: bytemark/smtp
+    restart: always
+    networks:
+      - pingnet
+
 networks:
     pingnet:

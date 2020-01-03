@@ -1,5 +1,8 @@
-# The search-base-dn value is the DN of a valid base entry where
-# managed users are stored.
+# Enable Delegated Admin Servlet
+dsconfig set-connection-handler-prop --handler-name "HTTPS Connection Handler" --add "http-servlet-extension:Delegated Admin" 
+dsconfig set-http-servlet-extension-prop --extension-name "Delegated Admin" --set access-token-scope:urn:pingidentity:directory-delegated-admin --set "response-header:Cache-Control: no-cache, no-store, must-revalidate" --set "response-header:Expires: 0" --set "response-header:Pragma: no-cache" --set access-token-validator:PingFederate
+
+# The search-base-dn value is the DN of a valid base entry where managed users are stored.
 #
 dsconfig create-rest-resource-type --type user --type-name users --set "display-name:Users" --set enabled:false --set "search-base-dn:${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:users --set "search-filter-pattern:(|(cn=*%%*)(mail=%%*)(uid=%%*)(sn=*%%*))" --set structural-ldap-objectclass:inetOrgPerson --set "parent-dn:ou=people,${USER_BASE_DN}"
 dsconfig create-rest-resource-type --type group --type-name groups --set "display-name:Groups" --set enabled:false --set "search-base-dn:${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:groups --set "search-filter-pattern:(cn=*%%*)" --set structural-ldap-objectclass:groupOfNames --set "parent-dn:ou=groups,${USER_BASE_DN}"
@@ -26,9 +29,9 @@ dsconfig set-rest-resource-type-prop --type-name users --set enabled:true
 dsconfig set-rest-resource-type-prop --type-name groups --set enabled:true 
 
 # Configure Users for PF Self-Service
-# dsconfig set-rest-resource-type-prop --type-name users --add auxiliary-ldap-objectclass:pf-connected-identities --set post-create-constructed-attribute:pf-connected-identity
-
-dsconfig set-http-servlet-extension-prop --extension-name "Delegated Admin" --set access-token-scope:urn:pingidentity:directory-delegated-admin --set "response-header:Cache-Control: no-cache, no-store, must-revalidate" --set "response-header:Expires: 0" --set "response-header:Pragma: no-cache" --set access-token-validator:PingFederate
+# Create constructed attribute pf-connected-identity:
+dsconfig create-constructed-attribute --attribute-name pf-connected-identity --set attribute-type:pf-connected-identity --set value-pattern:auth-source=pf-local-identity:user-id={uid} --no-prompt
+dsconfig set-rest-resource-type-prop --type-name users --add auxiliary-ldap-objectclass:pf-connected-identities --set post-create-constructed-attribute:pf-connected-identity
 
 # Add some Delegated Administrators
 dsconfig create-delegated-admin-rights --rights-name "Super Admin" --set enabled:true --set admin-user-dn:uid=superadmin,ou=Administrators,${USER_BASE_DN} 
@@ -46,3 +49,21 @@ dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Group A
 dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target-name com.unboundid.directory.server.http --set debug-level:VERBOSE
 dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target-name com.unboundid.directory.server.extensions.dadmin --set debug-level:VERBOSE
 dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target-name com.unboundid.directory.broker.api --set debug-level:VERBOSE
+
+## Configuration for New User Email Notification -- https://docs.pingidentity.com/bundle/pingdirectory-80/page/qsv1576274099861.html
+# Request search for Emailing new Users
+dsconfig create-request-criteria --criteria-name "Delegated Admin User Creation Request Criteria" --type simple --set operation-type:add --set "included-target-entry-dn:ou=people,${USER_BASE_DN}" --set "any-included-target-entry-filter:(objectClass=inetOrgPerson)" --set "included-application-name:PingDirectory Delegated Admin"
+
+# Create Notification Handler
+dsconfig create-account-status-notification-handler --handler-name "Delegated Admin Email Account Status Notification Handler" --type multi-part-email --set enabled:true --set "account-creation-notification-request-criteria:Delegated Admin User Creation Request Criteria" --set account-created-message-template:config/account-status-notification-email-templates/delegated-admin-account-created.template
+dsconfig set-account-status-notification-handler-prop --handler-name "Delegated Admin Email Account Status Notification Handler" --set enabled:true
+
+# Create Password Policy with Notification
+dsconfig set-password-policy-prop --policy-name "Default Password Policy" --set "account-status-notification-handler:Delegated Admin Email Account Status Notification Handler"
+
+# Configure external SMTP Service
+dsconfig create-external-server --server-name "SMTP Server" --type smtp --set server-host-name:smtp
+dsconfig set-global-configuration-prop --set "smtp-server:SMTP Server"
+
+## Enable Referential Integrity plug-in -- https://docs.pingidentity.com/bundle/pingdirectory-80/page/pjq1564011490754.html
+dsconfig set-plugin-prop --plugin-name "Referential Integrity" --set enabled:true

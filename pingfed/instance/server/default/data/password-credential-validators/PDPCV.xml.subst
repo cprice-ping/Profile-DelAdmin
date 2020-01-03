@@ -30,5 +30,6 @@
     </urn:Tables>
     <urn:ExtendedContractAttributes>
         <urn:AttributeName>entryUUID</urn:AttributeName>
+        <urn:AttributeName>mail</urn:AttributeName>
     </urn:ExtendedContractAttributes>
 </urn:PluginConfiguration>
