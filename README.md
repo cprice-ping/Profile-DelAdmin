@@ -2,6 +2,9 @@ This Server profile shows a complete install of PF \ PD with the Delegated Admin
 
 This stack can be used as the basis of Delegated Admin Use Cases.
 
+**Note:** `master` contains the latest version of Ping software. Prior versions can be found here:
+* [Delegator 3.5](https://github.com/cprice-ping/Profile-DelAdmin/tree/delegator-v3)
+
 ## Deployment - Docker Compose
 Environment variables in the `env_vars-sample` can be modified to inject the correct locations into this stack. Rename this to `env_vars` for it to be read by `docker-compose.yaml`
 
