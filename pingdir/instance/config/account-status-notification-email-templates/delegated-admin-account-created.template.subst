@@ -87,9 +87,9 @@ You will be required to choose a new password the first time you log in.
 
     <p>
 #if(${_DOLLAR_}password)
-      Your account has been created with a username of ${_DOLLAR_}username and a password of: <b>${_DOLLAR_}password</b>.
+      Your account has been created with a username of <b>${_DOLLAR_}username</b> and a password of: <b>${_DOLLAR_}password</b>.
 #else
-      Your account has been created with a username of ${_DOLLAR_}username.
+      Your account has been created with a username of <b>${_DOLLAR_}username</b>.
 #end
     </p>
 
