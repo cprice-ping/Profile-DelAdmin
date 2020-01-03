@@ -48,7 +48,7 @@ SUBJECT: ${_DOLLAR_}subject
 #parse("common-plain-text-body-header.vm")
 
 #if(${_DOLLAR_}password)
-Your account has been created with a username of ${_DOLLAR_}username and a password of ${_DOLLAR_}password.
+Your account has been created with a username of ${_DOLLAR_}username and a password of: ${_DOLLAR_}password.
 #else
 Your account has been created with a username of ${_DOLLAR_}username.
 #end
@@ -87,7 +87,7 @@ You will be required to choose a new password the first time you log in.
 
     <p>
 #if(${_DOLLAR_}password)
-      Your account has been created with a username of ${_DOLLAR_}username and a password of ${_DOLLAR_}password.
+      Your account has been created with a username of ${_DOLLAR_}username and a password of: <b>${_DOLLAR_}password</b>.
 #else
       Your account has been created with a username of ${_DOLLAR_}username.
 #end
