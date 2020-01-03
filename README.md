@@ -10,11 +10,6 @@ Environment variables in the `env_vars-sample` can be modified to inject the cor
 
 To implement this Use Case, download the `docker-compose.yaml` file and run `docker-compose up -d`
 
-DelAdmin trace logging has been enabled:  
-https://support.pingidentity.com/s/document-item?bundleId=pingdirectory-73&topicId=hld1564011489908.html
-
-The logs can be seen with this command:  
-`docker-compose exec pingdirectory tail -f /opt/out/instance/logs/debug`
 ---
 ## Delegator Usage
 
