@@ -9,9 +9,9 @@ The Delegator App is delivered behind an NGINX service.
 Connect a browser to `https://${PD_HOST}:${PD_PORT}/dadmin/v2/resourceTypes` to create the exception
 
 Delegator can used to generate passwords, and an email notification is sent to the email address of a newly created User.  
-This email contains a link to a PF LIP Profile Management URL -- this can be used to switch from Delegated Admin to Self-Service Account Management
-
-
+  
+This email contains a link to a PF LIP Profile Management URL -- this can be used to switch from Delegated Admin to Self-Service Account Management.  
+**Note:** A SMTP service is installed as part of the stack.  
 
 PingFed is configured with 2 OAuth clients:
 * PingLogon -- used to authenticate a user and issue tokens (AuthZ Code \ Implicit)
