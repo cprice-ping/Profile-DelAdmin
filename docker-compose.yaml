@@ -2,11 +2,12 @@ version: "2"
 
 services:
   pingfederate:
-    image: pingidentity/pingfederate:edge
+    image: pingidentity/pingfederate:9.3.3-edge
     command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
     environment:
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-DelAdmin.git
       - SERVER_PROFILE_PATH=pingfed
+      - SERVER_PROFILE_BRANCH=delegator-v3
       - VERBOSE=false
     env_file:
       # Configuration file created when setup.sh (Getting-started project root directory) is first run to source
@@ -27,10 +28,11 @@ services:
       - pingnet
 
   pingdirectory:
-    image: pingidentity/pingdirectory:edge
+    image: pingidentity/pingdirectory:7.3.0.3-edge
     environment:
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-DelAdmin.git
       - SERVER_PROFILE_PATH=pingdir
+      - SERVER_PROFILE_BRANCH=delegator-v3
       - SERVER_PROFILE_PARENT=BASELINE
       - SERVER_PROFILE_BASELINE_URL=https://github.com/cprice-ping/Profile-PD-Base.git
       - SERVER_PROFILE_BASELINE_PATH=pingdir
