@@ -49,7 +49,7 @@
     <loc:profile-config templateName="local.identity.profile.html" deleteIdentityEnabled="true"/>
     <loc:datastore-mapping>
         <loc:DataSource Description="" Type="LDAP" DataSourceId="LDAP-D803C87FAB2ADFB4B0A947B64BA6F0C6093A5CA3">
-            <urn:Parameter Name="search_base" Value="ou=people,dc=example.com" xmlns:urn="urn:sourceid.org:saml2:metadata-extension:v2"/>
+            <urn:Parameter Name="search_base" Value="${USER_BASE_DN}" xmlns:urn="urn:sourceid.org:saml2:metadata-extension:v2"/>
             <urn:Parameter Name="search_scope" Value="ONELEVEL_SCOPE" xmlns:urn="urn:sourceid.org:saml2:metadata-extension:v2"/>
         </loc:DataSource>
         <loc:Attribute fieldName="fullName" datastore-field="cn"/>
