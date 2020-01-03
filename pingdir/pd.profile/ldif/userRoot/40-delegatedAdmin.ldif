@@ -3,17 +3,18 @@ objectClass: organizationalUnit
 objectClass: top
 ou: Administrators
 
-dn: uid=superadmin,ou=Administrators,${USER_BASE_DN}
+dn: uid=8d3775f8-5c13-390b-889a-eedd4311fb02,ou=Administrators,${USER_BASE_DN}
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
 objectClass: inetOrgPerson
 objectClass: pf-connected-identities
+entryUUID: 8d3775f8-5c13-390b-889a-eedd4311fb02
 sn: Super
 cn: Super Administrator
 uid: superadmin
 userPassword: 2FederateM0re
-pf-connected-identity: auth-source=pf-local-identity:user-id=superadmin
+pf-connected-identity: auth-source=pf-local-identity:user-id=8d3775f8-5c13-390b-889a-eedd4311fb02
 
 dn: uid=useradmin,ou=Administrators,${USER_BASE_DN}
 objectClass: top
