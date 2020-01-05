@@ -5,7 +5,7 @@
     <c:item name="PingFederateDSJNDIName">LDAP-D803C87FAB2ADFB4B0A947B64BA6F0C6093A5CA3</c:item>
     
     <!-- LDAP search base -->
-    <c:item name="UserSearchBase">ou=identities,dc=example,dc=com</c:item>
+    <c:item name="UserSearchBase">ou=identities,${USER_BASE_DN}</c:item>
     
     <!-- LDAP username attribute.  ex: sAMAccountName -->
     <c:item name="UsernameAttribute">mail</c:item>

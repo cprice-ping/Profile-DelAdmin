@@ -14,6 +14,6 @@
     <c:item name="PingFederateDSJNDIName">LDAP-D803C87FAB2ADFB4B0A947B64BA6F0C6093A5CA3</c:item>
 
     <!-- LDAP search base. This should point to your Authentication Session location. Eg. OU=AuthenticationSessions,DC=example,DC=global  -->
-    <c:item name="SearchBase">ou=sessions,dc=example,dc=com</c:item>
+    <c:item name="SearchBase">ou=sessions,${USER_BASE_DN}</c:item>
 
 </c:config>
