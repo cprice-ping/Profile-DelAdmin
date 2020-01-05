@@ -14,7 +14,6 @@
                     <urn:AstAction lipId="mJQ6horuxksmmroS" xsi:type="urn:LocalIdentityMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                         <urn:InboundAttributeMapping>
                             <urn1:AttributeMap Name="pf.local.identity.unique.id" Type="Adapter" AttributeSourceId="HTMLForm" Value="username" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
-                            <urn1:AttributeMap Name="pf.local.identity.unique.id" Type="Adapter" AttributeSourceId="HTMLForm" Value="username" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
                             <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
                         </urn:InboundAttributeMapping>
                         <urn:OutboundAttributeMapping>
