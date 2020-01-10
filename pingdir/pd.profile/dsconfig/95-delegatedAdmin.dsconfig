@@ -27,7 +27,6 @@ dsconfig set-rest-resource-type-prop --type-name groups --set enabled:true
 
 # Configure Users for PF Self-Service
 # dsconfig set-rest-resource-type-prop --type-name users --add auxiliary-ldap-objectclass:pf-connected-identities --set post-create-constructed-attribute:pf-connected-identity
-
 dsconfig set-http-servlet-extension-prop --extension-name "Delegated Admin" --set access-token-scope:urn:pingidentity:directory-delegated-admin --set "response-header:Cache-Control: no-cache, no-store, must-revalidate" --set "response-header:Expires: 0" --set "response-header:Pragma: no-cache" --set access-token-validator:PingFederate
 
 # Add some Delegated Administrators
