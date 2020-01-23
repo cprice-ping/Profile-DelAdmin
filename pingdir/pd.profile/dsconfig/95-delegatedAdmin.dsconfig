@@ -25,12 +25,12 @@ dsconfig create-delegated-admin-attribute --type-name groups --attribute-type de
 dsconfig create-delegated-admin-attribute --type-name partnerou --attribute-type ou --set "display-name: OU"
 dsconfig create-delegated-admin-attribute --type-name partnerou --attribute-type description --set "display-name:Description"
 
-dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type cn --set "display-name:Full Name" --set "display-order-index:0"
-dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type givenName --set "display-name:First Name" --set "display-order-index:1"
-dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type sn --set "display-name:Last Name" --set "display-order-index:2"
-dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type mail --set "display-name:Email" --set "display-order-index:3"
-dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type uid --set "display-name:User ID" --set "display-order-index:4"
-dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type ds-pwp-account-disabled --set "display-name:Account Disabled"
+dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type cn --set "display-name:Full Name" --set "display-order-index:0"
+dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type givenName --set "display-name:First Name" --set "display-order-index:1"
+dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type sn --set "display-name:Last Name" --set "display-order-index:2"
+dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type mail --set "display-name:Email" --set "display-order-index:3"
+dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type uid --set "display-name:User ID" --set "display-order-index:4"
+dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type ds-pwp-account-disabled --set "display-name:Account Disabled"
 
 #
 # Complete the configuration of the Delegated Admin API.
