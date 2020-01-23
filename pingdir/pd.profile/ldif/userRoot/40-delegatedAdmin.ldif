@@ -48,4 +48,4 @@ member: uid=groupadmin,ou=Administrators,${USER_BASE_DN}
 dn: o=Partners,${USER_BASE_DN}
 objectClass: organization
 objectClass: top
-ou: Partners
+o: Partners
