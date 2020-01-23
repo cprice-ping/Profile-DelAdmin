@@ -7,7 +7,7 @@ dsconfig set-http-servlet-extension-prop --extension-name "Delegated Admin" --se
 dsconfig create-rest-resource-type --type user --type-name users --set "display-name:Users" --set enabled:true --set "search-base-dn:${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:users --set "search-filter-pattern:(|(cn=*%%*)(mail=%%*)(uid=%%*)(sn=*%%*))" --set structural-ldap-objectclass:inetOrgPerson --set "parent-dn:ou=people,${USER_BASE_DN}"
 dsconfig create-rest-resource-type --type group --type-name groups --set "display-name:Groups" --set enabled:true --set "search-base-dn:${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:groups --set "search-filter-pattern:(cn=*%%*)" --set structural-ldap-objectclass:groupOfNames --set "parent-dn:ou=groups,${USER_BASE_DN}"
 dsconfig create-rest-resource-type --type generic --type-name partnerou --set "display-name:PartnerOU" --set enabled:true --set "search-base-dn:o=Partners,${USER_BASE_DN}" --set primary-display-attribute-type:ou --set resource-endpoint:partnerou --set "search-filter-pattern:(ou=*%%*)" --set structural-ldap-objectclass:organizationalUnit --set "parent-dn:o=Partners,${USER_BASE_DN}"
-dsconfig create-rest-resource-type --type generic --type-name partneruser --set "display-name:PartnerUser" --set enabled:true --set "search-base-dn:o=Partners,${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:users --set "search-filter-pattern:(|(cn=*%%*)(mail=%%*)(uid=%%*)(sn=*%%*))" --set structural-ldap-objectclass:inetOrgPerson --set parent-resource-type:PartnerOU
+dsconfig create-rest-resource-type --type generic --type-name partneruser --set "display-name:PartnerUser" --set enabled:true --set "search-base-dn:o=Partners,${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:partneruser --set "search-filter-pattern:(|(cn=*%%*)(mail=%%*)(uid=%%*)(sn=*%%*))" --set structural-ldap-objectclass:inetOrgPerson --set parent-resource-type:PartnerOU
 
 #
 # These attributes are to be made accessible through the Delegated Admin API.
@@ -22,8 +22,8 @@ dsconfig create-delegated-admin-attribute --type-name users --attribute-type ds-
 dsconfig create-delegated-admin-attribute --type-name groups --attribute-type cn --set "display-name:Group"
 dsconfig create-delegated-admin-attribute --type-name groups --attribute-type description --set "display-name:Description"
 
-dsconfig create-delegated-admin-attribute --type-name groups --attribute-type ou --set "display-name: OU"
-dsconfig create-delegated-admin-attribute --type-name groups --attribute-type description --set "display-name:Description"
+dsconfig create-delegated-admin-attribute --type-name partnerou --attribute-type ou --set "display-name: OU"
+dsconfig create-delegated-admin-attribute --type-name partnerou --attribute-type description --set "display-name:Description"
 
 dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type cn --set "display-name:Full Name" --set "display-order-index:0"
 dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type givenName --set "display-name:First Name" --set "display-order-index:1"
@@ -31,7 +31,6 @@ dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-t
 dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type mail --set "display-name:Email" --set "display-order-index:3"
 dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type uid --set "display-name:User ID" --set "display-order-index:4"
 dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type ds-pwp-account-disabled --set "display-name:Account Disabled"
-
 
 #
 # Complete the configuration of the Delegated Admin API.
