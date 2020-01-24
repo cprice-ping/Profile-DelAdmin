@@ -1,6 +1,8 @@
 This Server profile shows a complete install of PF \ PD with the Delegated Administator service and application configured.
 
-This stack can be used as the basis of Delegated Admin Use Cases.
+This stack can be used as the basis of Delegated Admin Use Cases and includes the following structure \ rights:
+
+![Delegated Admin](./DelegatedAdmin.png)
 
 **Note:** `master` contains the latest version of Ping software. Prior versions can be found here:
 * [Delegator 3.5](https://github.com/cprice-ping/Profile-DelAdmin/tree/delegator-v3)
@@ -39,6 +41,7 @@ This stack demonstrates several levels of delegated administration:
 * Users (Users in `ou=People`)
 * Groups (Groups in `ou=Groups`)
 * Partners (OUs and Users in `o=Partners`)
+* Partner Users (Partner Admin)
 
 * User Profile (Self-Service Profile Management)
 * Passwords (Self-Service Password Reset - email OTP) 
@@ -67,6 +70,16 @@ Delegated Objects are managed using the PingData console:
 * Server: `pingdirectory`
 * User: `Administrator`
 * Pwd: `2FederateM0re`
+
+### Onboarding new Partner Administrator
+In order to show the onboarding of a new Partner, with Delegated Admin, do this:
+* Logon to Delegator with `SuperAdmin` or `PartnerAdmin`
+ * Create a PartnerOU
+ * Create a PartnerAdmin User in the new OU (If more than 1 PartnerOU, you'll see a dropdown list)
+* Logon to PD Console
+ * Add new Delegated Admin rights to the DN of the User that was created
+ * Assign PartnerUser rights with 
+
 
 PingFederate includes a couple of additional options:
 
