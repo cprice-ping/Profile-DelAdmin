@@ -15,7 +15,7 @@ uid: superadmin
 userPassword: 2FederateM0re
 pf-connected-identity: auth-source=pf-local-identity:user-id=superadmin
 
-dn: uid=partneradmin,ou=Administrators,${USER_BASE_DN}
+dn: uid=groupadmin,ou=Administrators,${USER_BASE_DN}
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
@@ -23,9 +23,9 @@ objectClass: inetOrgPerson
 objectClass: pf-connected-identities
 sn: Group
 cn: Group Administrator
-uid: partneradmin
+uid: groupadmin
 userPassword: 2FederateM0re
-pf-connected-identity: auth-source=pf-local-identity:user-id=partneradmin
+pf-connected-identity: auth-source=pf-local-identity:user-id=groupadmin
 
 dn: uid=useradmin,ou=Administrators,${USER_BASE_DN}
 objectClass: top
@@ -45,13 +45,13 @@ objectClass: person
 objectClass: organizationalPerson
 objectClass: inetOrgPerson
 objectClass: pf-connected-identities
-sn: Group
-cn: Group Administrator
+sn: Partner
+cn: Partner Administrator
 uid: partneradmin
 userPassword: 2FederateM0re
 pf-connected-identity: auth-source=pf-local-identity:user-id=partneradmin
 
-dn: cn=deladmins,ou=Administrators,${USER_BASE_DN}
+dn: cn=partneradmins,ou=Administrators,${USER_BASE_DN}
 objectClass: groupOfNames
 objectClass: top
 cn: deladmins

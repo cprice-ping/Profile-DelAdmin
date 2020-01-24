@@ -33,7 +33,15 @@ PingFed is configured with 2 OAuth clients:
 * PingLogon -- used to authenticate a user and issue tokens (AuthZ Code \ Implicit)
 * PingIntrospect -- used to validate tokens (PD has a PF Access Token Validator pointing to this client)
 
-## Delegated Admin Configuration  
+## Delegated Admin Configuration 
+This stack demonstrates several levels of delegated administration:
+* Global (Users \ Groups \ OUs)
+* Users (Users in `ou=People`)
+* Groups (Groups in `ou=Groups`)
+* Partners (OUs and Users in `o=Partners`)
+
+* User Profile (Self-Service Profile Management)
+* Passwords (Self-Service Password Reset - email OTP) 
 
 A set of PD users are also created and assigned Delegated Administrator roles:
 
@@ -41,6 +49,9 @@ These users are created in `ou=Administrators` to demonstrate separating the Adm
 
 **Super Administrator**  
 `SuperAdmin` \ `2FederateM0re`
+
+**Partner Administrator**  
+`PartnerAdmin` \ `2FederateM0re`
 
 **User Administrator**  
 `UserAdmin` \ `2FederateM0re`
