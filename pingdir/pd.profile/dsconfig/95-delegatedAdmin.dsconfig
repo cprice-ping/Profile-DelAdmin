@@ -56,8 +56,8 @@ dsconfig create-delegated-admin-resource-rights --rights-name "Super Admin" --re
 
 # PartnerAdmin -- Can manage PartnerOUs (o=Partners) && PartnerUsers
 dsconfig create-delegated-admin-rights --rights-name "Partner Admin" --set enabled:true --set admin-user-dn:uid=partneradmin,ou=Administrators,${USER_BASE_DN} 
-dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partnerou --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set enabled:true --set admin-permission:read --set resource-subtree:o=Partners,${USER_BASE_DN}
-dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partneruser --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:o=Partners,${USER_BASE_DN}
+# dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partnerou --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set enabled:true --set admin-permission:read --set resource-subtree:o=Partners,${USER_BASE_DN}
+# dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partneruser --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:o=Partners,${USER_BASE_DN}
 
 # UserAdmin -- Can manage Users in ou=People
 dsconfig create-delegated-admin-rights --rights-name "Delegated User Admin" --set enabled:true --set admin-user-dn:uid=useradmin,ou=Administrators,${USER_BASE_DN} 
