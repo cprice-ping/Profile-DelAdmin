@@ -5,7 +5,6 @@ dsconfig set-http-servlet-extension-prop --extension-name "Delegated Admin" --se
 # Configure Users for PF Self-Service
 # Create constructed attribute pf-connected-identity:
 dsconfig create-constructed-attribute --attribute-name pf-connected-identity --set attribute-type:pf-connected-identity --set value-pattern:auth-source=pf-local-identity:user-id={uid} --no-prompt
-# dsconfig set-rest-resource-type-prop --type-name users --add auxiliary-ldap-objectclass:pf-connected-identities --set post-create-constructed-attribute:pf-connected-identity
 
 # The search-base-dn value is the DN of a valid base entry where managed users are stored.
 #
@@ -48,15 +47,23 @@ dsconfig set-rest-resource-type-prop --type-name users --set enabled:true
 dsconfig set-rest-resource-type-prop --type-name groups --set enabled:true 
 
 # Add some Delegated Administrators
+# SuperAdmin -- can do everything
 dsconfig create-delegated-admin-rights --rights-name "Super Admin" --set enabled:true --set admin-user-dn:uid=superadmin,ou=Administrators,${USER_BASE_DN} 
 dsconfig create-delegated-admin-resource-rights --rights-name "Super Admin" --rest-resource-type users --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base
 dsconfig create-delegated-admin-resource-rights --rights-name "Super Admin" --rest-resource-type groups --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base
 dsconfig create-delegated-admin-resource-rights --rights-name "Super Admin" --rest-resource-type partnerou --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base
 dsconfig create-delegated-admin-resource-rights --rights-name "Super Admin" --rest-resource-type partneruser --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base
 
+# PartnerAdmin -- Can manage PartnerOUs (o=Partners) && PartnerUsers
+dsconfig create-delegated-admin-rights --rights-name "Partner Admin" --set enabled:true --set admin-user-dn:uid=partneradmin,ou=Administrators,${USER_BASE_DN} 
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partnerou --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set enabled:true --set admin-permission:read --set resource-subtree:o=Partners,${USER_BASE_DN}
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partneruser --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:o=Partners,${USER_BASE_DN}
+
+# UserAdmin -- Can manage Users in ou=People
 dsconfig create-delegated-admin-rights --rights-name "Delegated User Admin" --set enabled:true --set admin-user-dn:uid=useradmin,ou=Administrators,${USER_BASE_DN} 
 dsconfig create-delegated-admin-resource-rights --rights-name "Delegated User Admin" --rest-resource-type users --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=people,${USER_BASE_DN}
 
+# GroupAdmin -- Can manage Groups in ou=Groups
 dsconfig create-delegated-admin-rights --rights-name "Delegated Group Admin" --set enabled:true --set admin-group-dn:cn=deladmins,ou=Administrators,${USER_BASE_DN}
 dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Group Admin" --rest-resource-type groups --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=groups,${USER_BASE_DN}
 dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Group Admin" --rest-resource-type users --set enabled:true --set admin-permission:read --set resource-subtree:ou=people,${USER_BASE_DN} 
