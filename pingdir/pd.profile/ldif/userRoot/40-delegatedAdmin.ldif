@@ -51,11 +51,11 @@ uid: partneradmin
 userPassword: 2FederateM0re
 pf-connected-identity: auth-source=pf-local-identity:user-id=partneradmin
 
-dn: cn=partneradmins,ou=Administrators,${USER_BASE_DN}
+dn: cn=groupadmins,ou=Administrators,${USER_BASE_DN}
 objectClass: groupOfNames
 objectClass: top
 cn: deladmins
-member: uid=partneradmin,ou=Administrators,${USER_BASE_DN}
+member: uid=groupadmin,ou=Administrators,${USER_BASE_DN}
 
 dn: o=Partners,${USER_BASE_DN}
 objectClass: organization
