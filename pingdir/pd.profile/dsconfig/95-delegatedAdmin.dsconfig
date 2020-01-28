@@ -71,14 +71,14 @@ dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Group A
 
 # Partner1 Admin -- Can manage o=Partners,ou=Partner1 objects
 dsconfig create-delegated-admin-rights --rights-name "Partner1 Admin" --set enabled:true --set admin-user-dn:uid=p1admin,ou=Partner1,o=Partners,${USER_BASE_DN} 
-dsconfig create-delegated-admin-resource-rights --rights-name "Partner1 Admin" --rest-resource-type partnerusers --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner1,o=Partners,${USER_BASE_DN}  
-dsconfig create-delegated-admin-resource-rights --rights-name "Partner1 Admin" --rest-resource-type partnerous --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner1,o=Partners,${USER_BASE_DN}  
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner1 Admin" --rest-resource-type partnerusers --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner1,o=Partners,${USER_BASE_DN}  
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner1 Admin" --rest-resource-type partnerous --set enabled:true --set admin-permission:read --set resource-subtree:ou=Partner1,o=Partners,${USER_BASE_DN}  
 dsconfig create-delegated-admin-resource-rights --rights-name "Partner1 Admin" --rest-resource-type groups --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner1,o=Partners,${USER_BASE_DN} 
 
 # Partner2 Admin -- Can manage o=Partners,ou=Partner2 objects
-dsconfig create-delegated-admin-rights --rights-name "Partner2 Admin" --set enabled:true --set admin-user-dn:uid=p1admin,ou=Partner1,o=Partners,${USER_BASE_DN} 
-dsconfig create-delegated-admin-resource-rights --rights-name "Partner2 Admin" --rest-resource-type partnerusers --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner2,o=Partners,${USER_BASE_DN}  
-dsconfig create-delegated-admin-resource-rights --rights-name "Partner2 Admin" --rest-resource-type partnerous --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner2,o=Partners,${USER_BASE_DN}  
+dsconfig create-delegated-admin-rights --rights-name "Partner2 Admin" --set enabled:true --set admin-user-dn:uid=p2admin,ou=Partner2,o=Partners,${USER_BASE_DN} 
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner2 Admin" --rest-resource-type partnerusers --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner2,o=Partners,${USER_BASE_DN}  
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner2 Admin" --rest-resource-type partnerous --set enabled:true --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner2,o=Partners,${USER_BASE_DN}  
 dsconfig create-delegated-admin-resource-rights --rights-name "Partner2 Admin" --rest-resource-type groups --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner2,o=Partners,${USER_BASE_DN} 
 
 
