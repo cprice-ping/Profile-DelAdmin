@@ -2,10 +2,6 @@ dn: ou=Administrators,${USER_BASE_DN}
 objectClass: organizationalUnit
 objectClass: top
 ou: Administrators
-aci: (targetattr!="userPassword")(version 3.0; acl "Allow the pingfederate user to do everything in this branch"; allow(all) userdn="ldap:///cn=pingfederate,cn=root dns,cn=config";)
-aci: (targetattr="userPassword")(version 3.0; acl "Allow the pingfederate user to update passwords"; allow (write) userdn="ldap:///cn=pingfederate,cn=root dns,cn=config";)
-aci: (targetattr="isMemberOf")(version 3.0; acl "Allow the pingfederate user to get memberships"; allow (read) userdn="ldap:///cn=pingfederate,cn=root dns,cn=config";)
-
 
 dn: uid=superadmin,ou=Administrators,${USER_BASE_DN}
 objectClass: top
