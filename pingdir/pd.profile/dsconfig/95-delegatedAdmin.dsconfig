@@ -10,8 +10,8 @@ dsconfig create-constructed-attribute --attribute-name pf-connected-identity --s
 #
 dsconfig create-rest-resource-type --type user --type-name users --set "display-name:Users" --set enabled:true --set "search-base-dn:${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:users --set "search-filter-pattern:(|(cn=*%%*)(mail=%%*)(uid=%%*)(sn=*%%*))" --set structural-ldap-objectclass:inetOrgPerson --set "parent-dn:ou=people,${USER_BASE_DN}" --set create-rdn-attribute-type:uid --set post-create-constructed-attribute:pf-connected-identity --set auxiliary-ldap-objectclass:pf-connected-identities
 dsconfig create-rest-resource-type --type group --type-name groups --set "display-name:Groups" --set enabled:true --set "search-base-dn:${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:groups --set "search-filter-pattern:(cn=*%%*)" --set structural-ldap-objectclass:groupOfNames --set "parent-dn:ou=groups,${USER_BASE_DN}" --set create-rdn-attribute-type:cn
-dsconfig create-rest-resource-type --type generic --type-name partnerous --set "display-name:Partner OUs" --set enabled:true --set "search-base-dn:o=Partners,${USER_BASE_DN}" --set primary-display-attribute-type:ou --set resource-endpoint:partnerou --set "search-filter-pattern:(ou=*%%*)" --set structural-ldap-objectclass:organizationalUnit --set "parent-dn:o=Partners,${USER_BASE_DN}" --set create-rdn-attribute-type:ou
-dsconfig create-rest-resource-type --type user --type-name partnerusers --set "display-name:Partner Users" --set enabled:true --set "search-base-dn:o=Partners,${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:partneruser --set "search-filter-pattern:(|(cn=*%%*)(mail=%%*)(uid=%%*)(sn=*%%*))" --set structural-ldap-objectclass:ubidPerson --set parent-resource-type:partnerous --set create-rdn-attribute-type:uid --set post-create-constructed-attribute:pf-connected-identity --set auxiliary-ldap-objectclass:pf-connected-identities
+dsconfig create-rest-resource-type --type generic --type-name partnerouss --set "display-name:Partner OUs" --set enabled:true --set "search-base-dn:o=Partners,${USER_BASE_DN}" --set primary-display-attribute-type:ou --set resource-endpoint:partnerous --set "search-filter-pattern:(ou=*%%*)" --set structural-ldap-objectclass:organizationalUnit --set "parent-dn:o=Partners,${USER_BASE_DN}" --set create-rdn-attribute-type:ou
+dsconfig create-rest-resource-type --type user --type-name partneruserss --set "display-name:Partner Users" --set enabled:true --set "search-base-dn:o=Partners,${USER_BASE_DN}" --set primary-display-attribute-type:cn --set resource-endpoint:partnerusers --set "search-filter-pattern:(|(cn=*%%*)(mail=%%*)(uid=%%*)(sn=*%%*))" --set structural-ldap-objectclass:ubidPerson --set parent-resource-type:partnerouss --set create-rdn-attribute-type:uid --set post-create-constructed-attribute:pf-connected-identity --set auxiliary-ldap-objectclass:pf-connected-identities
 
 
 #
@@ -27,15 +27,15 @@ dsconfig create-delegated-admin-attribute --type-name users --attribute-type ds-
 dsconfig create-delegated-admin-attribute --type-name groups --attribute-type cn --set "display-name:Group"
 dsconfig create-delegated-admin-attribute --type-name groups --attribute-type description --set "display-name:Description"
 
-dsconfig create-delegated-admin-attribute --type-name partnerou --attribute-type ou --set "display-name: OU"
-dsconfig create-delegated-admin-attribute --type-name partnerou --attribute-type description --set "display-name:Description"
+dsconfig create-delegated-admin-attribute --type-name partnerous --attribute-type ou --set "display-name: OU"
+dsconfig create-delegated-admin-attribute --type-name partnerous --attribute-type description --set "display-name:Description"
 
-dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type cn --set "display-name:Full Name" --set "display-order-index:0"
-dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type givenName --set "display-name:First Name" --set "display-order-index:1"
-dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type sn --set "display-name:Last Name" --set "display-order-index:2"
-dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type mail --set "display-name:Email" --set "display-order-index:3"
-dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type uid --set "display-name:User ID" --set "display-order-index:4"
-dsconfig create-delegated-admin-attribute --type-name partneruser --attribute-type ds-pwp-account-disabled --set "display-name:Account Disabled"
+dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type cn --set "display-name:Full Name" --set "display-order-index:0"
+dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type givenName --set "display-name:First Name" --set "display-order-index:1"
+dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type sn --set "display-name:Last Name" --set "display-order-index:2"
+dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type mail --set "display-name:Email" --set "display-order-index:3"
+dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type uid --set "display-name:User ID" --set "display-order-index:4"
+dsconfig create-delegated-admin-attribute --type-name partnerusers --attribute-type ds-pwp-account-disabled --set "display-name:Account Disabled"
 
 #
 # Complete the configuration of the Delegated Admin API.
@@ -51,14 +51,14 @@ dsconfig set-rest-resource-type-prop --type-name groups --set enabled:true
 dsconfig create-delegated-admin-rights --rights-name "Super Admin" --set enabled:true --set admin-user-dn:uid=superadmin,ou=Administrators,${USER_BASE_DN} 
 dsconfig create-delegated-admin-resource-rights --rights-name "Super Admin" --rest-resource-type users --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base
 dsconfig create-delegated-admin-resource-rights --rights-name "Super Admin" --rest-resource-type groups --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base
-dsconfig create-delegated-admin-resource-rights --rights-name "Super Admin" --rest-resource-type partnerou --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base
-dsconfig create-delegated-admin-resource-rights --rights-name "Super Admin" --rest-resource-type partneruser --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base
+dsconfig create-delegated-admin-resource-rights --rights-name "Super Admin" --rest-resource-type partnerous --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base
+dsconfig create-delegated-admin-resource-rights --rights-name "Super Admin" --rest-resource-type partnerusers --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base
 
-# PartnerAdmin -- Can manage PartnerOUs (o=Partners) && PartnerUsers
+# PartnerAdmin -- Can manage PartnerOUss (o=Partners) && PartnerUsers
 dsconfig create-delegated-admin-rights --rights-name "Partner Admin" --set enabled:true --set admin-user-dn:uid=partneradmin,ou=Administrators,${USER_BASE_DN} 
-# dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partnerou --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set enabled:true --set admin-permission:read --set resource-subtree:o=Partners,${USER_BASE_DN}
-dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partneruser --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base 
-dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partnerou --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base  
+# dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partnerous --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set enabled:true --set admin-permission:read --set resource-subtree:o=Partners,${USER_BASE_DN}
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partnerusers --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base 
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner Admin" --rest-resource-type partnerous --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set admin-scope:all-resources-in-base  
 
 # UserAdmin -- Can manage Users in ou=People
 dsconfig create-delegated-admin-rights --rights-name "Delegated User Admin" --set enabled:true --set admin-user-dn:uid=useradmin,ou=Administrators,${USER_BASE_DN} 
@@ -68,6 +68,19 @@ dsconfig create-delegated-admin-resource-rights --rights-name "Delegated User Ad
 dsconfig create-delegated-admin-rights --rights-name "Delegated Group Admin" --set enabled:true --set admin-group-dn:cn=groupadmins,ou=Administrators,${USER_BASE_DN}
 dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Group Admin" --rest-resource-type groups --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=groups,${USER_BASE_DN}
 dsconfig create-delegated-admin-resource-rights --rights-name "Delegated Group Admin" --rest-resource-type users --set enabled:true --set admin-permission:read --set resource-subtree:ou=people,${USER_BASE_DN} 
+
+# Partner1 Admin -- Can manage o=Partners,ou=Partner1 objects
+dsconfig create-delegated-admin-rights --rights-name "Partner1 Admin" --set enabled:true --set admin-user-dn:uid=p1admin,ou=Partner1,o=Partners,${USER_BASE_DN} 
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner1 Admin" --rest-resource-type partnerusers --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner1,o=Partners,${USER_BASE_DN}  
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner1 Admin" --rest-resource-type partnerous --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner1,o=Partners,${USER_BASE_DN}  
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner1 Admin" --rest-resource-type groups --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner1,o=Partners,${USER_BASE_DN} 
+
+# Partner2 Admin -- Can manage o=Partners,ou=Partner2 objects
+dsconfig create-delegated-admin-rights --rights-name "Partner2 Admin" --set enabled:true --set admin-user-dn:uid=p1admin,ou=Partner1,o=Partners,${USER_BASE_DN} 
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner2 Admin" --rest-resource-type partnerusers --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner2,o=Partners,${USER_BASE_DN}  
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner2 Admin" --rest-resource-type partnerous --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner2,o=Partners,${USER_BASE_DN}  
+dsconfig create-delegated-admin-resource-rights --rights-name "Partner2 Admin" --rest-resource-type groups --set enabled:true --set admin-permission:create --set admin-permission:delete --set admin-permission:manage-group-membership --set admin-permission:read --set admin-permission:update --set resource-subtree:ou=Partner2,o=Partners,${USER_BASE_DN} 
+
 
 # Enable Logging
 dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target-name com.unboundid.directory.server.http --set debug-level:VERBOSE

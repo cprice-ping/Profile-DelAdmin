@@ -61,3 +61,33 @@ dn: o=Partners,${USER_BASE_DN}
 objectClass: organization
 objectClass: top
 o: Partners
+
+dn: ou=Partner1,o=Partners,${USER_BASE_DN}
+objectClass: organizationalUnit
+objectClass: top
+ou: Partner1
+
+dn: uid=p1admin,ou=Partner1,o=Partners,${USER_BASE_DN}
+objectClass: top
+objectClass: ubidPerson
+objectClass: pf-connected-identities
+sn: Partner1
+cn: Partner1 Administrator
+uid: p1admin
+userPassword: 2FederateM0re
+pf-connected-identity: auth-source=pf-local-identity:user-id=p1admin
+
+dn: ou=Partner2,o=Partners,${USER_BASE_DN}
+objectClass: organizationalUnit
+objectClass: top
+ou: Partner2
+
+dn: uid=p2admin,ou=Partner2,o=Partners,${USER_BASE_DN}
+objectClass: top
+objectClass: ubidPerson
+objectClass: pf-connected-identities
+sn: Partner2
+cn: Partner2 Administrator
+uid: p2admin
+userPassword: 2FederateM0re
+pf-connected-identity: auth-source=pf-local-identity:user-id=p2admin
