@@ -42,8 +42,8 @@ services:
       - SERVER_PROFILE_PATH=pingdir
  
       - SERVER_PROFILE_PARENT=BASELINE
-      - SERVER_PROFILE_BASELINE_URL=https://github.com/cprice-ping/Profile-PD-Base.git
-      - SERVER_PROFILE_BASELINE_PATH=pingdir
+      - SERVER_PROFILE_BASELINE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
+      - SERVER_PROFILE_BASELINE_PATH=baseline/pingdirectory
     env_file:
       - ~/.pingidentity/devops
       - ./env_vars
