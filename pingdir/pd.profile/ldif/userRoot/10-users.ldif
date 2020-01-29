@@ -107,5 +107,3 @@ givenName: PingFederate
 uid: auditor
 userPassword: 2FederateM0re
 pf-connected-identity: auth-source=pf-local-identity:user-id=auditor
-
-
