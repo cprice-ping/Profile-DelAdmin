@@ -1,4 +1,6 @@
-This Server profile shows a complete install of PF \ PD with the Delegated Administator service and application configured.
+This Server profile shows a complete install of PF \ PD with the Delegated Administator service and application configured.  
+
+The [PF-Base Profile](https://github.com/cprice-ping/Profile-PF-Base) contains more complete documentation about how PingFed is configured.
 
 This stack can be used as the basis of Delegated Admin Use Cases and includes the following structure \ rights:
 

@@ -1,9 +1,16 @@
 # Acceptance of the Ping Identity EULA
 PING_IDENTITY_ACCEPT_EULA=YES
 
+# PF Logging Level
+PF_LOG_LEVEL=DEBUG
+
 # Base DN of PD Users
 USER_ORG_BASE=example.com
 USER_BASE_DN=dc=example.com
+BASE_CLASS=domain
+BASE_ATTRIBUTE=dc
+BASE_VALUE=example.com
+
 
 # BaseURL of the PingFed service
 PF_BASE_URL=https://ext-docker.cpricelab.com:9031
