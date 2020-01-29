@@ -5,7 +5,7 @@ services:
     image: pingidentity/pingfederate:edge
     command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
     environment:
-      - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-DelAdmin.git
+      - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-PF-Base.git
       - SERVER_PROFILE_PATH=pingfed
       - VERBOSE=false
     env_file:
@@ -16,7 +16,7 @@ services:
     # Example: Examples below for mounting local directories for inbound server profile and persisting
     #          server build.  The local /opt/out directory must be empty when building new server
     #             /opt/out - Resulting server build
-    #             /opt/in  - Inbound server-profile detail in liue of SERVER_PROFILE_URL (must be commented out)
+    #             /opt/in  - Inbound server-profile detail in lieu of SERVER_PROFILE_URL (must be commented out)
     #volumes:
     #   - ${HOME}/projects/devops/volumes/simple-sync.pingfederate:/opt/out
     #   - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingfederate:/opt/in
@@ -26,11 +26,21 @@ services:
     networks:
       - pingnet
 
+  pf-config-base:
+    image: postman/newman
+    command: run https://www.getpostman.com/collections/2e0df14dcf26f1ddb39a -e postman_vars.json --insecure --ignore-redirects
+    volumes: 
+      # An environment file should be injected into the image - this file should contain your specfic info and secrets
+      - ./postman_vars.json:/etc/newman/postman_vars.json
+    networks:
+      - pingnet
+
   pingdirectory:
     image: pingidentity/pingdirectory:edge
     environment:
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-DelAdmin.git
       - SERVER_PROFILE_PATH=pingdir
+ 
       - SERVER_PROFILE_PARENT=BASELINE
       - SERVER_PROFILE_BASELINE_URL=https://github.com/cprice-ping/Profile-PD-Base.git
       - SERVER_PROFILE_BASELINE_PATH=pingdir

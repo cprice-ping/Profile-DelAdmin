@@ -44,7 +44,9 @@ This stack demonstrates several levels of delegated administration:
 * Partner Users (Partner Admin)
 
 * User Profile (Self-Service Profile Management)
-* Passwords (Self-Service Password Reset - email OTP) 
+* Passwords (Self-Service Password Reset - PingID) 
+
+**Note:** Using PingID as the SSPR mechanism means the user needs to have been enrolled into PID. You can first use the Dummy-SAML connection to set the Extended Properties -- `authNexp` to `MFA` and login as the user and enroll a device.
 
 A set of PD users are also created and assigned Delegated Administrator roles:
 
