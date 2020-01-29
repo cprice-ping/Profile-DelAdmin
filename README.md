@@ -1,6 +1,10 @@
-This Server profile shows a complete install of PF \ PD with the Delegated Administator service and application configured.
+This Server profile shows a complete install of PF \ PD with the Delegated Administator service and application configured.  
 
-This stack can be used as the basis of Delegated Admin Use Cases.
+The [PF-Base Profile](https://github.com/cprice-ping/Profile-PF-Base) contains more complete documentation about how PingFed is configured.
+
+This stack can be used as the basis of Delegated Admin Use Cases and includes the following structure \ rights:
+
+![Delegated Admin](./DelegatedAdmin.png)
 
 **Note:** `master` contains the latest version of Ping software. Prior versions can be found here:
 * [Delegator 3.5](https://github.com/cprice-ping/Profile-DelAdmin/tree/delegator-v3)
@@ -33,7 +37,18 @@ PingFed is configured with 2 OAuth clients:
 * PingLogon -- used to authenticate a user and issue tokens (AuthZ Code \ Implicit)
 * PingIntrospect -- used to validate tokens (PD has a PF Access Token Validator pointing to this client)
 
-## Delegated Admin Configuration  
+## Delegated Admin Configuration 
+This stack demonstrates several levels of delegated administration:
+* Global (Users \ Groups \ OUs)
+* Users (Users in `ou=People`)
+* Groups (Groups in `ou=Groups`)
+* Partners (OUs and Users in `o=Partners`)
+* Partner Users (Partner Admin)
+
+* User Profile (Self-Service Profile Management)
+* Passwords (Self-Service Password Reset - PingID) 
+
+**Note:** Using PingID as the SSPR mechanism means the user needs to have been enrolled into PID. You can first use the Dummy-SAML connection to set the Extended Properties -- `authNexp` to `MFA` and login as the user and enroll a device.
 
 A set of PD users are also created and assigned Delegated Administrator roles:
 
@@ -41,6 +56,9 @@ These users are created in `ou=Administrators` to demonstrate separating the Adm
 
 **Super Administrator**  
 `SuperAdmin` \ `2FederateM0re`
+
+**Partner Administrator**  
+`PartnerAdmin` \ `2FederateM0re`
 
 **User Administrator**  
 `UserAdmin` \ `2FederateM0re`
@@ -56,6 +74,16 @@ Delegated Objects are managed using the PingData console:
 * Server: `pingdirectory`
 * User: `Administrator`
 * Pwd: `2FederateM0re`
+
+### Onboarding new Partner Administrator
+In order to show the onboarding of a new Partner, with Delegated Admin, do this:
+* Logon to Delegator with `SuperAdmin` or `PartnerAdmin`
+ * Create a PartnerOU
+ * Create a PartnerAdmin User in the new OU (If more than 1 PartnerOU, you'll see a dropdown list)
+* Logon to PD Console
+ * Add new Delegated Admin rights to the DN of the User that was created
+ * Assign PartnerUser rights with 
+
 
 PingFederate includes a couple of additional options:
 

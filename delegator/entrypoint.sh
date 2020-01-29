@@ -18,8 +18,8 @@ if test "${1}" = "start-server" ; then
 #       PF_HOST: ${PF_HOST}
 #       PF_PORT: ${PF_PORT}
 #       PF_CLIENT_ID: ${PF_CLIENT_ID}
-#       PD_HOST: ${PF_HOST}
-#       PD_PORT: ${PF_PORT}
+#       PD_HOST: ${PD_HOST}
+#       PD_PORT: ${PD_PORT}
 # 
 #     To set via a docker run or .yaml just set them using examples below
 #
