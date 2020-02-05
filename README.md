@@ -10,7 +10,9 @@ This stack can be used as the basis of Delegated Admin Use Cases and includes th
 * [Delegator 3.5](https://github.com/cprice-ping/Profile-DelAdmin/tree/delegator-v3)
 
 ## Deployment - Docker Compose
-Environment variables in the `env_vars-sample` can be modified to inject the correct locations into this stack. Rename this to `env_vars` for it to be read by `docker-compose.yaml`
+Environment variables in the `env_vars-sample` can be modified to inject the correct locations into this stack. Rename this to `env_vars` for it to be read by `docker-compose.yaml`  
+
+The `postman_vars.json` file is used to inject values into the [PF-Base Profile](https://github.com/cprice-ping/Profile-PF-Base) API configuration.  
 
 To implement this Use Case, download the `docker-compose.yaml` file and run `docker-compose up -d`
 
