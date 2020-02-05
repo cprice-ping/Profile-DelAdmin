@@ -21,12 +21,12 @@ TO: $account_email_address
 ## BCC: bccRecipient@example.com
 
 ## Set the sender address for the email message.  This must be specified.
-FROM: DelegatedAdmin@mydomain.com
+FROM: DelegatedAdmin@ping-demos.com
 
 ## If you want replies to default to a different address than the one used as
 ## the sender address, then uncomment the next line and set the appropriate
 ## value.
-REPLY-TO: support@mydomain.com
+REPLY-TO: support@ping-demos.com
 
 #else
 
