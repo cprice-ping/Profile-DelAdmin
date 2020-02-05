@@ -88,8 +88,8 @@ dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target
 dsconfig create-debug-target --publisher-name 'File-Based Debug Logger' --target-name com.unboundid.directory.broker.api --set debug-level:VERBOSE
 
 ## Configuration for New User Email Notification -- https://docs.pingidentity.com/bundle/pingdirectory-80/page/qsv1576274099861.html
-# Request search for Emailing new Users
-dsconfig create-request-criteria --criteria-name "Delegated Admin User Creation Request Criteria" --type simple --set operation-type:add --set "included-target-entry-dn:ou=people,${USER_BASE_DN}" --set "any-included-target-entry-filter:(objectClass=inetOrgPerson)" --set "included-application-name:PingDirectory Delegated Admin"
+# Request Criteria search for Emailing new Users
+dsconfig create-request-criteria --criteria-name "Delegated Admin User Creation Request Criteria" --type simple --set operation-type:add --set "included-target-entry-dn:${USER_BASE_DN}" --set "any-included-target-entry-filter:(objectClass=ubidPerson)" --set "included-application-name:PingDirectory Delegated Admin"
 
 # Create Notification Handler
 dsconfig create-account-status-notification-handler --handler-name "Delegated Admin Email Account Status Notification Handler" --type multi-part-email --set enabled:true --set "account-creation-notification-request-criteria:Delegated Admin User Creation Request Criteria" --set account-created-message-template:config/account-status-notification-email-templates/delegated-admin-account-created.template
