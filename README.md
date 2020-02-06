@@ -74,7 +74,7 @@ This user is a member of the `DelAdmins` group that is used to delegate the Grou
 If you want to show how DelAdmin is applied outside of Delegator, you can make calls via SCIM or DirAPI with the appropriate Delegated Admin credentials in the `Authorization: Basic` header. 
 
 ```
-curl --location --request GET 'https://{{Your PingDirectory Host}}:1443/directory/v1/dc=coupademo.com/subtree?searchScope=wholeSubtree&limit=1000&filter=uid%20pr' \
+curl --location --request GET 'https://{{Your PingDirectory Host}}:1443/directory/v1/dc=example.com/subtree?searchScope=wholeSubtree&limit=1000&filter=uid%20pr' \
 --header 'Authorization: Basic ZjJhZG1pbjoyRmVkZXJhdGVNMHJl'
 ```
 
