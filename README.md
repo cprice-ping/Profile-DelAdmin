@@ -69,24 +69,41 @@ These users are created in `ou=Administrators` to demonstrate separating the Adm
 `GroupAdmin` \ `2FederateM0re`  
 This user is a member of the `DelAdmins` group that is used to delegate the Group resources
 
+---
+### Data Layer demonstration
+If you want to show how DelAdmin is applied outside of Delegator, you can make calls via SCIM or DirAPI with the appropriate Delegated Admin credentials in the `Authorization: Basic` header. 
+
+```
+curl --location --request GET 'https://{{Your PingDirectory Host}}:1443/directory/v1/dc=coupademo.com/subtree?searchScope=wholeSubtree&limit=1000&filter=uid%20pr' \
+--header 'Authorization: Basic ZjJhZG1pbjoyRmVkZXJhdGVNMHJl'
+```
+
+---
 Delegated Objects are managed using the PingData console:  
 
-`https://{{PingDataConsole}}:8443/console`
 
-* Server: `pingdirectory`
-* User: `Administrator`
-* Pwd: `2FederateM0re`
 
 ### Onboarding new Partner Administrator
 In order to show the onboarding of a new Partner, with Delegated Admin, do this:
 * Logon to Delegator with `SuperAdmin` or `PartnerAdmin`
  * Create a PartnerOU
  * Create a PartnerAdmin User in the new OU (If more than 1 PartnerOU, you'll see a dropdown list)
-* Logon to PD Console
+* Logon to PD Console  
+ `https://{{PingDataConsole}}:8443/console`
+  * Server: `pingdirectory` 
+  * User: `Administrator`
+  * Pwd: `2FederateM0re`
  * Add new Delegated Admin rights to the DN of the User that was created
- * Assign PartnerUser rights with 
+ * Assign **PartnerOU** rights with `read` in `resources-in-specific-subtrees` and the DN of the PartnerOU you put the Admin into
+ * Assign **PartnerUsers** rights with `all` in `resources-in-specific-subtrees` and the DN of the PartnerOU you put the Admin into
+ * Assign **Groups** with `all` in `resources-in-specific-subtrees` and the DN of the PartnerOU you put the Admin into
 
+### Emailing new Users
+An SMTP server is included in the stack with PD wired into it. There's a Notifier configured in [95-delegatedAdmin.dsconfig](pingdir/pd.profile/dsconfig/95-delegatedAdmin.dsconfig) that will attempt to send a message to the User Email that was entered for that User. The email will contain the `username`, the `password` and a link to PF Profile Management.
 
+**Note:** On the PF Profile Management screen, the User can add \ modify their `phoneNumber` (not available in Delegator) and `Set Password`
+
+---
 PingFederate includes a couple of additional options:
 
 * Virtual Host -- `pingfederate`  (Used for the backchannel ATV call from PD)
