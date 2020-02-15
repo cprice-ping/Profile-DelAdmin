@@ -1,0 +1,49 @@
+{
+	"id": "40199d03-d15c-47e4-b502-8b62f98479d1",
+	"name": "pf_base_vars.json",
+	"values": [
+		{
+			"key": "pfAdminURL",
+			"value": "https://pingfederate:9999",
+			"enabled": true
+		},
+		{
+			"key": "pfBaseURL",
+			"value": "https://ext-docker.cpricelab.com:9031",
+			"enabled": true
+		},
+		{
+			"key": "userBaseDN",
+			"value": "dc=example.com",
+			"enabled": true
+		},
+		{
+			"key": "oauthSecret",
+			"value": "2FederateM0re",
+			"enabled": true
+		},
+		{
+			"key": "pfAdmin",
+			"value": "administrator",
+			"enabled": true
+		},
+		{
+			"key": "pfAdminPwd",
+			"value": "2FederateM0re",
+			"enabled": true
+		},
+		{
+			"key": "pingId",
+			"value": "#Auto-Generated from PingOne, downloaded by id=[000000] email=[bogus@anywhere.com]\n#Mon Oct 07 12:36:37 MDT 2019\nuse_base64_key=ThisIsNotARealKey/nuse_signature=true/ntoken=ThisIsABadToken\nidp_url=https://idpxnyl3m.pingidentity.com/pingid/norg_alias=YourOrgIsInYourPropertiesFile\nadmin_url=https://idpxnyl3m.pingidentity.com/pingid\nauthenticator_url=https://authenticator.pingone.com/pingid/ppm",
+			"enabled": true
+		},
+		{
+			"key": "cors_host",
+			"value": "ext-docker.cpricelab.com",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-01-27T16:30:52.728Z",
+	"_postman_exported_using": "Postman/7.16.0"
+}
