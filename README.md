@@ -1,7 +1,10 @@
 This Server profile shows a complete install of PF \ PD with the Delegated Administator service and application configured.  
 
-The [PF-Base Profile](https://github.com/cprice-ping/Profile-PF-Base) contains more complete documentation about how PingFed is configured.
+Since this solution includes User Profile Management with a PF LIP, this is based on the CIAM build:  
 
+[PF-CIAM Profile](https://github.com/cprice-ping/Profile-PF-CIAM) contains more complete documentation about how PingFed is configured.
+
+---
 This stack can be used as the basis of Delegated Admin Use Cases and includes the following structure \ rights:
 
 ![Delegated Admin](./DelegatedAdmin.png)
@@ -12,7 +15,7 @@ This stack can be used as the basis of Delegated Admin Use Cases and includes th
 ## Deployment - Docker Compose
 Environment variables in the `env_vars-sample` can be modified to inject the correct locations into this stack. Rename this to `env_vars` for it to be read by `docker-compose.yaml`  
 
-The `postman_vars.json` file is used to inject values into the [PF-Base Profile](https://github.com/cprice-ping/Profile-PF-Base) API configuration.  
+The `pf_base_vars.json` && `pf_ciam_vars.json` files are used to inject values into the [PF-Base Profile](https://github.com/cprice-ping/Profile-PF-Base) API configuration.  
 
 To implement this Use Case, download the `docker-compose.yaml` file and run `docker-compose up -d`
 
