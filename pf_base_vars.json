@@ -34,7 +34,7 @@
 		},
 		{
 			"key": "pingId",
-			"value": "#Auto-Generated from PingOne, downloaded by id=[000000] email=[bogus@anywhere.com]\n#Mon Oct 07 12:36:37 MDT 2019\nuse_base64_key=ThisIsNotARealKey/nuse_signature=true/ntoken=ThisIsABadToken\nidp_url=https://idpxnyl3m.pingidentity.com/pingid/norg_alias=YourOrgIsInYourPropertiesFile\nadmin_url=https://idpxnyl3m.pingidentity.com/pingid\nauthenticator_url=https://authenticator.pingone.com/pingid/ppm",
+			"value": "#Auto-Generated from PingOne, downloaded by id=[000000] email=[bogus@pingidentity.com]\n#Sat Jan 25 10:35:09 MST 2020\nuse_base64_key=UseYourBase64Key\nuse_signature=true\ntoken=UseYourToken\nidp_url=https://idpxnyl3m.pingidentity.com/pingid\norg_alias=UseYourOrgAlias\nadmin_url=https://idpxnyl3m.pingidentity.com/pingid\nauthenticator_url=https://authenticator.pingone.com/pingid/ppm",
 			"enabled": true
 		},
 		{

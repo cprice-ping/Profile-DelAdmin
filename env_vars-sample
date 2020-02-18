@@ -1,17 +1,3 @@
-# Acceptance of the Ping Identity EULA
-PING_IDENTITY_ACCEPT_EULA=YES
-
-# PF Logging Level
-PF_LOG_LEVEL=DEBUG
-
-# Base DN of PD Users
-USER_ORG_BASE=example.com
-USER_BASE_DN=dc=example.com
-BASE_CLASS=domain
-BASE_ATTRIBUTE=dc
-BASE_VALUE=example.com
-
-
 # BaseURL of the PingFed service
 PF_BASE_URL=https://ext-docker.cpricelab.com:9031
 
@@ -19,6 +5,8 @@ PF_BASE_URL=https://ext-docker.cpricelab.com:9031
 DELEGATOR_CORS_URL=http://ext-docker.cpricelab.com
 
 # PF details for the Delegated Admin OIDC app
+# PF_HOST && PF_PORT are used to construct the allowed `Issuer` of the id_token
+# Delegator will prepend "https://", you only need the port if if it's not `:443`
 PF_HOST=ext-docker.cpricelab.com
 PF_PORT=9031
 PF_CLIENT_ID=PingLogon
@@ -29,3 +17,11 @@ PD_PORT=1443
 
 # Base Hostname of the PingFed service being used for Delegated Admin
 PF_BASE_HOST=ext-docker.cpricelab.com
+
+# PD User Base DN (PD Baseline is `dc=example,dc=com`)
+# This needs to match what's in `postman-pf.json`
+USER_BASE_DN=dc=example.com
+
+PING_IDENTITY_ACCEPT_EULA=YES
+
+PF_LOG_LEVEL=DEBUG

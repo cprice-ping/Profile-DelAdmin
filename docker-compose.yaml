@@ -3,7 +3,7 @@ version: "3"
 services:
   pingfederate:
     image: pingidentity/pingfederate:edge
-    command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
+    command: wait-for pingdirectory:389 -t 420 -- entrypoint.sh start-server
     environment:
       # Start with the PF-Base Server Profile
       - SERVER_PROFILE_BASE_URL=https://github.com/cprice-ping/Profile-PF-Base.git
