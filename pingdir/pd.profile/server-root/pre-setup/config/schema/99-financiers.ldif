@@ -1,7 +1,0 @@
-dn: cn=schema
-objectClass: top
-objectClass: ldapSubentry
-objectClass: subschema
-cn: schema
-attributeTypes: ( coupaAccountId-OID NAME 'coupaAccountId' USAGE userApplications )
-objectClasses: ( financierOU-OID NAME 'financierOU' AUXILIARY MUST coupaAccountId )
