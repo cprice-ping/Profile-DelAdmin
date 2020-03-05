@@ -1,5 +1,19 @@
-# BaseURL of the PingFed service
-PF_BASE_URL=https://ext-docker.cpricelab.com:9031
+## Use Case: PF - Base
+
+PING_IDENTITY_ACCEPT_EULA=YES
+
+# Password used by PF to talk to PD (Default with Baseline PD is 2FederateMore)
+PF_USER_PWD=2FederateM0re
+
+# PF Logging Level
+PF_LOG_LEVEL=INFO
+
+# PD User Base DN (PD Baseline is `dc=example,dc=com`)
+USER_BASE_DN=dc=example.com
+
+#####
+
+## Use Case: Delegated Admin
 
 # Delegated Admin app CORS 
 DELEGATOR_CORS_URL=http://ext-docker.cpricelab.com
@@ -13,15 +27,7 @@ PF_CLIENT_ID=PingLogon
 
 # PD details for Delegator API calls
 PD_HOST=int-docker.cpricelab.com
-PD_PORT=1443
+PD_PORT=2443
 
 # Base Hostname of the PingFed service being used for Delegated Admin
 PF_BASE_HOST=ext-docker.cpricelab.com
-
-# PD User Base DN (PD Baseline is `dc=example,dc=com`)
-# This needs to match what's in `postman-pf.json`
-USER_BASE_DN=dc=example.com
-
-PING_IDENTITY_ACCEPT_EULA=YES
-
-PF_LOG_LEVEL=DEBUG

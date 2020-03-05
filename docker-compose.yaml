@@ -5,13 +5,13 @@ services:
     image: pingidentity/pingfederate:edge
     command: wait-for pingdirectory:389 -t 420 -- entrypoint.sh start-server
     environment:
-      # Start with the PF-Base Server Profile
-      - SERVER_PROFILE_BASE_URL=https://github.com/cprice-ping/Profile-PF-Base.git
-      - SERVER_PROFILE_BASE_PATH=pingfed
-      # Add the PF-CIAM Profile to install the PingIDSDK Integration Kit
-      - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-PF-CIAM.git
-      - SERVER_PROFILE_PATH=pingfed
-      - SERVER_PROFILE_PARENT=BASE
+    # Add the PF-CIAM Profile to install the PingIDSDK Integration Kit
+    - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-PF-CIAM.git
+    - SERVER_PROFILE_PATH=pingfed
+    - SERVER_PROFILE_PARENT=BASE
+    # Start with the PF-Base Server Profile
+    - SERVER_PROFILE_BASE_URL=https://github.com/cprice-ping/Profile-PF-Base.git
+    - SERVER_PROFILE_BASE_PATH=pingfed
     env_file:
       # Configuration file created when setup.sh (Getting-started project root directory) is first run to source
       # devops user/key details for evaluation licenses and for docker image/git tags
@@ -30,22 +30,14 @@ services:
     networks:
       - pingnet
 
-  pf-config-base:
-    image: postman/newman
-    command: run https://www.getpostman.com/collections/2e0df14dcf26f1ddb39a -e postman_vars.json --insecure --ignore-redirects
+  pingconfig:
+    image: pricecs/pingconfigurator
+    environment:
+      # Collections: Use Case: PD - GTE Baseline --> Use Case: PF Initial --> Use Case: PF-CIAM --> Use Case: Add Sample Apps --> Use Case: Delegated Admin
+      - COLLECTIONS=https://www.getpostman.com/collections/251528ba1c88b823da85,https://www.getpostman.com/collections/f8e24e4e53f7059beb10,https://www.getpostman.com/collections/b17a3494b4f4d54de628,https://www.getpostman.com/collections/9bd0b2aa44487c0204f0,https://www.getpostman.com/collections/eb7dc32b6d429fd7bcd2
     volumes: 
       # An environment file should be injected into the image - this file should contain your specfic info and secrets
-      - ./pf_base_vars.json:/etc/newman/postman_vars.json
-    networks:
-      - pingnet
-
-  # Provides the PF-CIAM API configuration
-  pf-config-ciam:
-    image: postman/newman
-    command: run https://www.getpostman.com/collections/b17a3494b4f4d54de628 -e postman_vars.json --insecure --ignore-redirects
-    volumes:
-      # An environment file should be injected into the image - this file should contain your specfic info and secrets
-      - ./pf_ciam_vars.json:/etc/newman/postman_vars.json
+      - ./postman_vars.json:/usr/src/app/postman_vars.json
     networks:
       - pingnet
 
@@ -54,10 +46,12 @@ services:
     environment:
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-DelAdmin.git
       - SERVER_PROFILE_PATH=pingdir
- 
-      - SERVER_PROFILE_PARENT=BASELINE
-      - SERVER_PROFILE_BASELINE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
-      - SERVER_PROFILE_BASELINE_PATH=baseline/pingdirectory
+      - SERVER_PROFILE_BRANCH=api-testing
+      - SERVER_PROFILE_PARENT=BASE
+
+      - SERVER_PROFILE_BASE_URL=https://github.com/cprice-ping/Profile-PD-Base.git
+      - SERVER_PROFILE_BASE_PATH=pingdir
+      - SERVER_PROFILE_BASE_BRANCH=api-testing
     env_file:
       - ~/.pingidentity/devops
       - ./env_vars
@@ -68,11 +62,12 @@ services:
     ports:
       - 1636:636
       - 1443:443
+      - 2443:2443
     networks:
       - pingnet
                     
   pingdataconsole:
-    image: pingidentity/pingdataconsole:edge
+    image: pingidentity/pingdataconsole:latest
     ports:
       - 8443:8443
     networks:

@@ -1,8 +1,24 @@
 This Server profile shows a complete install of PF \ PD with the Delegated Administator service and application configured.  
 
-Since this solution includes User Profile Management with a PF LIP, this is based on the CIAM build:  
+Since this solution is based on a layered set of Use Cases:
 
-[PF-CIAM Profile](https://github.com/cprice-ping/Profile-PF-CIAM) contains more complete documentation about how PingFed is configured.
+API Collections (Required): 
+* Use Case: PD - Baseline
+  * [Documentation]()
+  * [Collection](https://www.getpostman.com/collections/251528ba1c88b823da85)
+* Use Case: PF - Initial
+  * [Collection](https://www.getpostman.com/collections/f8e24e4e53f7059beb10)
+* Use Case: PF - CIAM
+  * [Collection](https://www.getpostman.com/collections/b17a3494b4f4d54de628)
+* Use Case: PF - Add Sample Apps
+  * [Collection](https://www.getpostman.com/collections/9bd0b2aa44487c0204f0)
+* Use Case: Delegated Admin  
+  * [Collection](https://www.getpostman.com/collections/eb7dc32b6d429fd7bcd2)
+
+Server Profiles:
+[PD-Base Profile](https://github.com/cprice-ping/Profile-PD-Base)
+[PF-Base Profile](https://github.com/cprice-ping/Profile-PF-Base)
+[PF-CIAM Profile](https://github.com/cprice-ping/Profile-PF-CIAM)
 
 ---
 This stack can be used as the basis of Delegated Admin Use Cases and includes the following structure \ rights:
@@ -15,9 +31,9 @@ This stack can be used as the basis of Delegated Admin Use Cases and includes th
 ## Deployment - Docker Compose
 Environment variables in the `env_vars-sample` can be modified to inject the correct locations into this stack. Rename this to `env_vars` for it to be read by `docker-compose.yaml`  
 
-The `pf_base_vars.json` && `pf_ciam_vars.json` files are used to inject values into the [PF-Base Profile](https://github.com/cprice-ping/Profile-PF-Base) API configuration.  
+The `postman_vars.json` files is used to inject values into the configuration.  
 
-To implement this Use Case, download the `docker-compose.yaml` file and run `docker-compose up -d`
+To implement this Use Case, download the `docker-compose.yaml`, `env_vars` and `postman_vars.json` files, make edits appropriate to your environment and run `docker-compose up -d`
 
 ---
 ## Delegator Usage
@@ -51,9 +67,9 @@ This stack demonstrates several levels of delegated administration:
 * Partner Users (Partner Admin)
 
 * User Profile (Self-Service Profile Management)
-* Passwords (Self-Service Password Reset - PingID) 
+* Passwords (Self-Service Password Reset - PingIDSDK) 
 
-**Note:** Using PingID as the SSPR mechanism means the user needs to have been enrolled into PID. You can first use the Dummy-SAML connection to set the Extended Properties -- `authNexp` to `MFA` and login as the user and enroll a device.
+**Note:** Using PingIDSDK as the SSPR mechanism requires a PID SDK App defined in P1 Admin, it **does not** need a Mobile App - the SDK Connector will auto-enroll email and SMS (if added to the Profile). 
 
 A set of PD users are also created and assigned Delegated Administrator roles:
 
