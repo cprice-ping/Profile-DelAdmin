@@ -1,0 +1,28 @@
+# BaseURL of the PingFed service - Used in the PD Email Notification
+PF_BASE_URL=https://ext-docker.ping-demos.com
+
+# Delegated Admin app CORS 
+# DELEGATOR_CORS_URL=http://ext-docker.ping-demos.com
+
+# PF details for the Delegated Admin OIDC app
+# PF_HOST && PF_PORT are used to construct the allowed `Issuer` of the id_token
+# Delegator will prepend "https://", you only need the port if if it's not `:443`
+PF_HOST=ext-docker.ping-demos.com
+PF_PORT=9031
+PF_CLIENT_ID=Delegator
+
+# PD details for Delegator API calls
+PD_HOST=ext-docker.ping-demos.com
+PD_PORT=443
+
+# Base Hostname of the PingFed service being used for Delegated Admin
+PF_BASE_HOST=ext-docker.ping-demos.com
+
+# PD User Base DN (PD Baseline is `dc=example,dc=com`)
+# This needs to match what's in `postman_vars.json`
+USER_BASE_DN=dc=example.com
+
+PING_IDENTITY_ACCEPT_EULA=YES
+
+PF_LOG_LEVEL=DEBUG
+PF_USER_PWD=2FederateM0re

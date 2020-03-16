@@ -1,24 +1,18 @@
 This Server profile shows a complete install of PF \ PD with the Delegated Administator service and application configured.  
 
-Since this solution is based on a layered set of Use Cases:
+This Use Case is designed to be added to the [Customer360](https://github.com/pingidentity/pingidentity-solution-stacks/tree/master/Customer360) Solution
 
-API Collections (Required): 
-* Use Case: PD - Baseline
-  * [Documentation]()
-  * [Collection](https://www.getpostman.com/collections/251528ba1c88b823da85)
-* Use Case: PF - Initial
-  * [Collection](https://www.getpostman.com/collections/f8e24e4e53f7059beb10)
-* Use Case: PF - CIAM
-  * [Collection](https://www.getpostman.com/collections/b17a3494b4f4d54de628)
-* Use Case: PF - Add Sample Apps
-  * [Collection](https://www.getpostman.com/collections/9bd0b2aa44487c0204f0)
+API Collections: 
+* Solution: Customer360
+  * [Collection](https://www.getpostman.com/collections/344bbc13f4ccd4ebc5f5)
+  * [Documentation](https://documenter.getpostman.com/view/1239082/SzRw2Axv)
 * Use Case: Delegated Admin  
   * [Collection](https://www.getpostman.com/collections/eb7dc32b6d429fd7bcd2)
+  * [Documentation](https://documenter.getpostman.com/view/1239082/SzRyypf1)
 
-Server Profiles:
-[PD-Base Profile](https://github.com/cprice-ping/Profile-PD-Base)
-[PF-Base Profile](https://github.com/cprice-ping/Profile-PF-Base)
-[PF-CIAM Profile](https://github.com/cprice-ping/Profile-PF-CIAM)
+Server Profiles:  
+* [Customer360](https://github.com/pingidentity/pingidentity-solution-stacks/tree/master/Customer360)
+* [Profile-DelAdmin](https://github.com/cprice-ping/Profile-DelAdmin)
 
 ---
 This stack can be used as the basis of Delegated Admin Use Cases and includes the following structure \ rights:
@@ -28,12 +22,39 @@ This stack can be used as the basis of Delegated Admin Use Cases and includes th
 **Note:** `master` contains the latest version of Ping software. Prior versions can be found here:
 * [Delegator 3.5](https://github.com/cprice-ping/Profile-DelAdmin/tree/delegator-v3)
 
-## Deployment - Docker Compose
-Environment variables in the `env_vars-sample` can be modified to inject the correct locations into this stack. Rename this to `env_vars` for it to be read by `docker-compose.yaml`  
+## Pre-Requisites
+Same as those for [Customer360](https://github.com/pingidentity/pingidentity-solution-stacks/tree/master/Customer360)
 
-The `postman_vars.json` files is used to inject values into the configuration.  
+## Deployment
+* Copy the `docker-compose.yaml`, `env_vars` and `postman_vars.json` files to a folder
+* Modify the `env_vars` file to match your environment
+* Modify the `postman.json` file to match your environment
+* Launch the stack with `docker-compose up -d`
+* Logs for the stack can be watched with `docker-compose logs -f`
+* Logs for individual services can be watched with `docker-compose logs -f {service}`
 
-To implement this Use Case, download the `docker-compose.yaml`, `env_vars` and `postman_vars.json` files, make edits appropriate to your environment and run `docker-compose up -d`
+**Note:** The collection has a set of default variables defined - to override them, place them in the `postman_vars.json` file.
+
+**Collection Defaults**
+| Variable | Description | Default |
+| -------- | ----------- | ------- |
+| `pfAdminURL` | PingFed Administration URL | https://pingfederate:9999 |
+| `pdAdminUrl` | PingDir Administration URL | https://pingdirectory:443 |
+| `pfAdmin` | PingFed API Admin Account | api-admin |
+| `pfAdminPwd` | PingFed API Admin Password| {{globalPwd}} |
+| `pdAdmin` | PingFed Admin Account | cn=dmanager |
+| `pdAdminPwd` | PingDir Admin Password| {{globalPwd}} |
+| `oauthSecret` | PingLogon Client Secret | {{globalPwd}} |
+| `pfAuthnApiUrl` | PF AuthN App URL | {{pfBaseURL}}/pf-ws/authn/explorer |
+| `globalPwd` | Common Password | 2FederateM0re |
+
+**`postman_vars.json`**
+| Variable | Description | Customer Values |
+| -------- | ----------- | ------- |
+| `pfBaseURL` | PingFed Runtime URL | https://{{your PF public FQDN}}:9031 |
+| `pingIdSdk` | PingID SDK Properties  | Your SDK Properties file |
+| `sdkAppId` | PID SDK Application ID | Your SDK App ID |
+| `delegatorHost` | Host for Delegator | http://{{Your Delegator FQDN}} |
 
 ---
 ## Delegator Usage
@@ -44,7 +65,7 @@ The Delegator App is delivered behind an NGINX service.
 
 **Note:** If you are using self-signed certs in PD, you'll first need to create an exception for it in your browser. Without it, Delegator will fail with a CORS error (it's not CORS - it's SSL Validation that's failing).
 
-Connect a browser to `https://${PD_HOST}:${PD_PORT}` to create the exception
+Connect a browser to `https://${PD_HOST}:2443` to create the exception
 
 ---
 
@@ -99,8 +120,6 @@ curl --location --request GET 'https://{{Your PingDirectory Host}}:1443/director
 
 ---
 Delegated Objects are managed using the PingData console:  
-
-
 
 ### Onboarding new Partner Administrator
 In order to show the onboarding of a new Partner, with Delegated Admin, do this:
