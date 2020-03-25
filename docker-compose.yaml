@@ -5,25 +5,14 @@ services:
     image: pingidentity/pingfederate:edge
     command: wait-for pingdirectory:389 -t 420 -- entrypoint.sh start-server
     environment:
-      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
-      - SERVER_PROFILE_PATH=Customer360/pingfederate
+      - SERVER_PROFILE_URL=https://github.com/pingidentity/Customer360.git
+      - SERVER_PROFILE_PATH=pingfederate
     env_file:
-      # Configuration file created when setup.sh (Getting-started project root directory) is first run to source
-      # devops user/key details for evaluation licenses and for docker image/git tags
       - ~/.pingidentity/devops
       - ./env_vars
-    # Example: Examples below for mounting local directories for inbound server profile and persisting
-    #          server build.  The local /opt/out directory must be empty when building new server
-    #             /opt/out - Resulting server build
-    #             /opt/in  - Inbound server-profile detail in lieu of SERVER_PROFILE_URL (must be commented out)
-    #volumes:
-    #   - ${HOME}/projects/devops/volumes/simple-sync.pingfederate:/opt/out
-    #   - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingfederate:/opt/in
     ports:
       - 9031:9031
       - 9999:9999
-    networks:
-      - pingnet
 
   pingdirectory:
     image: pingidentity/pingdirectory:edge
@@ -31,41 +20,43 @@ services:
       # DelAdmin has some files that need to be layered in 
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-DelAdmin.git
       - SERVER_PROFILE_PATH=pingdir
+      - SERVER_PROFILE_BRANCH=api-testing
       - SERVER_PROFILE_PARENT=BASE
 
-      - SERVER_PROFILE_BASE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
-      - SERVER_PROFILE_BASE_PATH=Customer360/pingdirectory
+      - SERVER_PROFILE_BASE_URL=https://github.com/pingidentity/Customer360.git
+      - SERVER_PROFILE_BASE_PATH=pingdirectory
     env_file:
       - ~/.pingidentity/devops
       - ./env_vars
-    #volumes:
-    #   - ${HOME}/projects/devops/volumes/simple-sync.pingdirectory:/opt/out
-    #   - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingdirectory:/opt/in
 
     ports:
       - 1636:636
       - 1443:443
       - 2443:2443
-    networks:
-      - pingnet
                     
   pingdataconsole:
     image: pingidentity/pingdataconsole:latest
     ports:
       - 8443:8443
-    networks:
-      - pingnet
 
   pingconfig:
     image: pricecs/pingconfigurator
     environment:
-            # Collections: Solution - Customer360 --> Use Case: Delegated Admin
-      - COLLECTIONS=https://www.getpostman.com/collections/344bbc13f4ccd4ebc5f5,https://www.getpostman.com/collections/eb7dc32b6d429fd7bcd2
+            # Collections: Solution - Customer360 --> User Case: Add PA Ingress Controller --> Use Case: Delegated Admin
+      - COLLECTIONS=https://www.getpostman.com/collections/344bbc13f4ccd4ebc5f5,https://www.getpostman.com/collections/eaa397bd3a35ef3095c1,https://www.getpostman.com/collections/eb7dc32b6d429fd7bcd2
     volumes: 
       # An environment file should be injected into the image - this file should contain your specfic info and secrets
       - ./postman_vars.json:/usr/src/app/postman_vars.json
-    networks:
-      - pingnet
+
+  pingaccess:
+    image: pingidentity/pingaccess:6.0.1-edge
+    env_file:
+     - ~/.pingidentity/devops
+     - ./env_vars
+    ports:
+     - 80:8080
+     - 443:3000
+     - 9000:9000
 
   pingdelegator:
     image: pricecs/pingdelegator:4.0
@@ -73,14 +64,7 @@ services:
       - ./env_vars
     ports:
       - 8088:80
-    networks:
-      - pingnet
 
   smtp:
     image: bytemark/smtp
     restart: always
-    networks:
-      - pingnet
-
-networks:
-    pingnet:
