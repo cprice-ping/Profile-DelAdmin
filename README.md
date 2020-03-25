@@ -1,6 +1,6 @@
 This Server profile shows a complete install of PF \ PD with the Delegated Administator service and application configured.  
 
-This Use Case is designed to be added to the [Customer360](https://github.com/pingidentity/pingidentity-solution-stacks/tree/master/Customer360) Solution
+This Use Case is designed to be added to the [Customer360](https://github.com/pingidentity/Customer360) Solution
 
 API Collections: 
 * Solution: Customer360
@@ -11,7 +11,7 @@ API Collections:
   * [Documentation](https://documenter.getpostman.com/view/1239082/SzRyypf1)
 
 Server Profiles:  
-* [Customer360](https://github.com/pingidentity/pingidentity-solution-stacks/tree/master/Customer360)
+* [Customer360](https://github.com/pingidentity/Customer360)
 * [Profile-DelAdmin](https://github.com/cprice-ping/Profile-DelAdmin)
 
 ---
@@ -23,7 +23,7 @@ This stack can be used as the basis of Delegated Admin Use Cases and includes th
 * [Delegator 3.5](https://github.com/cprice-ping/Profile-DelAdmin/tree/delegator-v3)
 
 ## Pre-Requisites
-Same as those for [Customer360](https://github.com/pingidentity/pingidentity-solution-stacks/tree/master/Customer360)
+Same as those for [Customer360](https://github.com/pingidentity/Customer360)
 
 ## Deployment
 * Copy the `docker-compose.yaml`, `env_vars` and `postman_vars.json` files to a folder

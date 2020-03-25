@@ -4,7 +4,7 @@
 	"values": [
 		{
 			"key": "pfBaseURL",
-			"value": "Your PF BaseURL -- (Proxied by PA on :443)",
+			"value": "https://ext-docker.cpricelab.com",
 			"enabled": true
 		},
 		{
@@ -13,17 +13,17 @@
 			"enabled": true
 		},
 		{	"key": "sdkAppId",
-			"value": "YourPIDSDKAppID",
+			"value": "00000000-0000-0000-0000-000000000000",
 			"enabled": true
 		},
 		{
 			"key": "delegatorHost",
-			"value": "Your PA Virtual Host",
+			"value": "ext-docker.cpricelab.com",
 			"enabled": true
 		},
 		{
 			"key": "paVirtualHost",
-			"value": "Your PA Virtual Host",
+			"value": "ext-docker.cpricelab.com",
 			"enabled": true
 		}
 	],
