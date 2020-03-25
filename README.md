@@ -59,16 +59,11 @@ Same as those for [Customer360](https://github.com/pingidentity/Customer360)
 ---
 ## Delegator Usage
 
-The Delegator App is delivered behind an NGINX service. 
+The Delegator App is delivered behind an NGINX service. PingAccess is then used to proxy the Delegator app and handle SSL certificates for it and DelAdmin API.
 
-`http://{DELEGATOR_PUBLIC_URL}/delegator`
-
-**Note:** If you are using self-signed certs in PD, you'll first need to create an exception for it in your browser. Without it, Delegator will fail with a CORS error (it's not CORS - it's SSL Validation that's failing).
-
-Connect a browser to `https://${PD_HOST}:2443` to create the exception
+`https://{DELEGATOR_PUBLIC_URL}/delegator`
 
 ---
-
 Delegator can used to generate passwords, and leverages the Notification Email functionality in PingDir v8 to send a New User message to the email address of the created User.  
   
 This email contains a link to a PF LIP Profile Management URL -- this can be used to switch from Delegated Admin to Self-Service Account Management.  
@@ -145,7 +140,7 @@ An SMTP server is included in the stack with PD wired into it. There's a Notifie
 PingFederate includes a couple of additional options:
 
 * Virtual Host -- `pingfederate`  (Used for the backchannel ATV call from PD)
-* OAuth AS --> Allowed Origins -- `http://${DELEGATOR_CORS_URL}`  (Used to allow Delegator to call OIDC endpoints)
+* OAuth AS --> Allowed Origins -- `https://${DELEGATOR_CORS_URL}`  (Used to allow Delegator to call OIDC endpoints)
 * PingLogon client is configured for Implicit and a wildcard `redirect_uri`
 * OIDC policy to map the User CN to the `name` claim -- this is displayed in the Sign Out option in Delegator
 
