@@ -2,7 +2,7 @@ version: "3"
 
 services:
   pingfederate:
-    image: pingidentity/pingfederate:edge
+    image: pingidentity/pingfederate:latest
     command: wait-for pingdirectory:389 -t 420 -- entrypoint.sh start-server
     environment:
       - SERVER_PROFILE_URL=https://github.com/pingidentity/Customer360.git
@@ -15,12 +15,11 @@ services:
       - 9999:9999
 
   pingdirectory:
-    image: pingidentity/pingdirectory:edge
+    image: pingidentity/pingdirectory:latest
     environment:
       # DelAdmin has some files that need to be layered in 
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-DelAdmin.git
       - SERVER_PROFILE_PATH=pingdir
-      - SERVER_PROFILE_BRANCH=api-testing
       - SERVER_PROFILE_PARENT=BASE
 
       - SERVER_PROFILE_BASE_URL=https://github.com/pingidentity/Customer360.git
@@ -49,7 +48,7 @@ services:
       - ./postman_vars.json:/usr/src/app/postman_vars.json
 
   pingaccess:
-    image: pingidentity/pingaccess:6.0.1-edge
+    image: pingidentity/pingaccess:latest
     env_file:
      - ~/.pingidentity/devops
      - ./env_vars
