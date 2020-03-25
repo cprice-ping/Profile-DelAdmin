@@ -6,13 +6,33 @@ API Collections:
 * Solution: Customer360
   * [Collection](https://www.getpostman.com/collections/344bbc13f4ccd4ebc5f5)
   * [Documentation](https://documenter.getpostman.com/view/1239082/SzRw2Axv)
-* Use Case: Delegated Admin  
+* Use Case: Delegated Admin - Simple
+  * [Collection](https://www.getpostman.com/collections/213af84dea3cbc210516)
+  * [Documentation](https://documenter.getpostman.com/view/1239082/SzYUXfZZ)
+* Use Case: Delegated Admin - Advanced
   * [Collection](https://www.getpostman.com/collections/eb7dc32b6d429fd7bcd2)
   * [Documentation](https://documenter.getpostman.com/view/1239082/SzRyypf1)
 
 Server Profiles:  
 * [Customer360](https://github.com/pingidentity/Customer360)
 * [Profile-DelAdmin](https://github.com/cprice-ping/Profile-DelAdmin)
+
+## Delegated Admin Use Cases
+The Use Case that's applied to the stack is controlled by the Collection URL places in the `COLLECTIONS` variable in the `pingconfig` service (in [docker-compose.yaml](./docker-compose.yaml))
+* Simple -- https://www.getpostman.com/collections/213af84dea3cbc210516
+* Advanced -- https://www.getpostman.com/collections/eb7dc32b6d429fd7bcd2
+
+### Simple
+This collection does the basic wiring of Delegator into PingFederate, and configures the following Delegated Admin rights:
+* `superadmin` -- Full rights for Users and Objects in the directory
+* `useradmin` -- Full rights for Users in the `ou=People` OU
+* `groupadmin` -- Full rights for Groups in the `ou=Groups` OU (granted by being a member of `cn=groupadmins,ou=groups,...`)
+
+### Advanced
+This collection does all the Delegator wiring, and the **Simple** delegation, and adds:
+* `partneradmin` -- Create OUs and Users under `o=Partners`
+* `p1admin` -- Full rights for Users and Groups under `ou=partner1,o=partners,...`
+* `p2admin` -- Full rights for Users and Groups under `ou=partner2,o=partners,...`
 
 ---
 This stack can be used as the basis of Delegated Admin Use Cases and includes the following structure \ rights:
