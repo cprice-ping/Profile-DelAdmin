@@ -41,7 +41,10 @@ services:
   pingconfig:
     image: pricecs/pingconfigurator
     environment:
-            # Collections: Solution - Customer360 --> User Case: Add PA Ingress Controller --> Use Case: Delegated Admin
+      # Collections: Solution - Customer360 --> User Case: Add PA Ingress Controller --> Use Case: Delegated Admin [ Simple | Advanced ]
+      # Simple:
+      # - COLLECTIONS=https://www.getpostman.com/collections/344bbc13f4ccd4ebc5f5,https://www.getpostman.com/collections/eaa397bd3a35ef3095c1,https://www.getpostman.com/collections/213af84dea3cbc210516
+      # Advanced:
       - COLLECTIONS=https://www.getpostman.com/collections/344bbc13f4ccd4ebc5f5,https://www.getpostman.com/collections/eaa397bd3a35ef3095c1,https://www.getpostman.com/collections/eb7dc32b6d429fd7bcd2
     volumes: 
       # An environment file should be injected into the image - this file should contain your specfic info and secrets
