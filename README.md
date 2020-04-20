@@ -81,7 +81,7 @@ Same as those for [Customer360](https://github.com/pingidentity/Customer360)
 
 The Delegator App is delivered behind an NGINX service. PingAccess is then used to proxy the Delegator app and handle SSL certificates for it and DelAdmin API.
 
-`https://{DELEGATOR_PUBLIC_URL}/delegator`
+`https://{DELEGATOR_PUBLIC_URL}/delegator/`
 
 ---
 Delegator can used to generate passwords, and leverages the Notification Email functionality in PingDir v8 to send a New User message to the email address of the created User.  
